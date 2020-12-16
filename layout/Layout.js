@@ -17,7 +17,10 @@ import Menu from "./Menu";
 import routes from "./routes";
 import PageHeader from "./PageHeader";
 
+import useWindowSize from "../hooks/windowSize";
+
 const Layout = ({ children, title }) => {
+  const windowSize = useWindowSize();
   return (
     <>
       <HeaderContainer
@@ -26,7 +29,7 @@ const Layout = ({ children, title }) => {
             <Header aria-label="zymoter">
               <HeaderMenuButton
                 aria-label="Open menu"
-                isCollapsible
+                isCollapsible={windowSize.width < 1312}
                 onClick={onClickSideNavExpand}
                 isActive={isSideNavExpanded}
               />
@@ -35,13 +38,16 @@ const Layout = ({ children, title }) => {
               </HeaderName>
               <Menu />
               <Toolbar />
-              <Sidebar routes={routes} isExpanded={isSideNavExpanded} />
+              <Sidebar routes={routes} isExpanded={isSideNavExpanded} windowSize={windowSize} />
             </Header>
           </>
         )}
       ></HeaderContainer>
       <main className={styles.container}>
-        <Grid  fullWidth style={{ height:'100%', paddingRight:'0'}}>
+        <Grid
+          fullWidth
+          style={{ height: "100%", paddingRight: "0", paddingLeft: "0" }}
+        >
           <Row className={styles.banner}>
             <PageHeader title={title} />
           </Row>

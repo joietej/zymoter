@@ -4,7 +4,12 @@
   background: $ui-background;
   width: 100%;
   margin-left: 0;
-  padding-left:$layout-03;
+  @media (min-width: 672px) {
+    padding-left:$layout-03;
+  }
+  @media (min-width: 1312px) {
+    padding-left:16rem;
+  }
   padding-top:$layout-04;
   transition: .11s ease;
   position: relative;
