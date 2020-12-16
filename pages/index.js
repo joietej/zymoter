@@ -4,6 +4,6 @@ const Home = () => {
   return <div></div>;
 };
 
-Home.title = "Welcome to Spectra One !";
+Home.title = "Welcome to Zymoter One !";
 
 export default Home;

@@ -23,14 +23,14 @@ const Layout = ({ children, title }) => {
       <HeaderContainer
         render={({ isSideNavExpanded, onClickSideNavExpand }) => (
           <>
-            <Header aria-label="IBM Platform Name">
+            <Header aria-label="zymoter">
               <HeaderMenuButton
                 aria-label="Open menu"
                 isCollapsible
                 onClick={onClickSideNavExpand}
                 isActive={isSideNavExpanded}
               />
-              <HeaderName href="#" prefix="Spectra">
+              <HeaderName href="#" prefix="Zymoter">
                 One
               </HeaderName>
               <Menu />
