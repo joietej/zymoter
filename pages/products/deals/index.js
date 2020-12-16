@@ -1,7 +1,9 @@
 import React from "react";
 
 const Deals = () => {
-  return <div>Deals</div>;
+  return <div></div>;
 };
+
+Deals.title = "Awesome Deals";
 
 export default Deals;

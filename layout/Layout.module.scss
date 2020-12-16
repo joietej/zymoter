@@ -1,10 +1,41 @@
 @import "carbon-components/scss/globals/scss/vars.scss";
 
+.container {
+  background: $ui-background;
+  width: 100%;
+  margin-left: 0;
+  padding-left:$layout-03;
+  padding-top:$layout-04;
+  transition: .11s ease;
+  position: relative;
+  height: calc(100vh - 48px);
+}
+
+
+.banner {
+  height: 25%;
+  background-color: $ui-05;
+  color: $inverse-01;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 1px solid #393939;
+  h1 {
+    margin-top:$layout-03;
+    margin-bottom:$layout-03;
+  }
+  div {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .main {
-  margin-top: $layout-04;
-  height: 85vh;
+  height: 65%;
 }
 
 .footer {
-  height: 5vh;
+  height: 10%;
 }
+
+

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   SideNav,
   SideNavLink,
@@ -31,20 +32,25 @@ const NavLink = React.forwardRef(({ onClick, href, name, renderIcon }, ref) => {
   );
 });
 
-const renderRoute = (route) => {
+const Route = ({route, onClick}) => {
   return (
-    <Link href={route.path} passHref>
-      <NavLink name={route.name} renderIcon={Fade16} />
+    <Link  href={route.path} passHref>
+      <NavLink name={route.name} renderIcon={route.icon || Fade16} onClick={onClick}/>
     </Link>
   );
 };
 
-const renderRouteWithSub = (route) => {
+const RouteWithSub = ({ route, pathname, onClick }) => {
   return (
-    <SideNavMenu renderIcon={Fade16} title={route.name}>
+    <SideNavMenu
+      key={route.name}
+      isActive={pathname.startsWith(route.path)}
+      renderIcon={route.icon || Fade16}
+      title={route.name}
+    >
       {route.sub.map((r) => (
-        <Link href={route.path + r.path} passHref>
-          <NavMenuItemLink name={r.name} />
+        <Link key={r.name} href={route.path + r.path} passHref>
+          <NavMenuItemLink name={r.name} onClick={onClick} />
         </Link>
       ))}
     </SideNavMenu>
@@ -52,11 +58,17 @@ const renderRouteWithSub = (route) => {
 };
 
 const Sidebar = ({ routes, isExpanded }) => {
+  const { pathname } = useRouter();
+  const onClick = (e) => (isExpanded = false);
   return (
     <SideNav aria-label="Side navigation" isRail expanded={isExpanded}>
       <SideNavItems>
         {routes.map((r) =>
-          r.sub && r.sub.length ? renderRouteWithSub(r) : renderRoute(r)
+          r.sub && r.sub.length ? (
+            <RouteWithSub key={r.name} route={r} pathname={pathname} onClick={onClick} />
+          ) : (
+            <Route key={r.name} route={r} onClick={onClick} />
+          )
         )}
       </SideNavItems>
     </SideNav>
