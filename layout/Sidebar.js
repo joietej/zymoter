@@ -1,19 +1,15 @@
 import React from "react";
 
-import { useRouter } from "next/router";
 import { SideNav, SideNavItems } from "carbon-components-react";
 
 import Routes from "./Routes";
 
-const Sidebar = ({ routes, isExpanded, windowSize }) => {
-  const { pathname } = useRouter();
-
+const Sidebar = ({ routes, isExpanded, windowSize, pathname }) => {
   return (
     <SideNav
       aria-label="Side navigation"
-      isRail={windowSize.width > 672 && windowSize.width < 1312}
+      isRail={windowSize.width > 672}
       expanded={isExpanded}
-      isPersistent
     >
       <SideNavItems>
         <Routes

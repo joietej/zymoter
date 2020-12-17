@@ -1,25 +1,36 @@
 import React from "react";
 import {
+  HeaderNavigation,
   HeaderMenu,
   HeaderMenuItem,
-  HeaderNavigation,
 } from "carbon-components-react";
+import Link from "next/link";
 
-
-const Menu = () => {
+const HeaderMenuItemLink = React.forwardRef(({ onClick, href, name, icon, pathname }, ref) => {
   return (
-    <>
-      <HeaderNavigation aria-label="IBM [Platform]">
-        <HeaderMenuItem href="#">Link 1</HeaderMenuItem>
-        <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
-        <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
-        <HeaderMenu menuLinkName="Link 4" aria-label="Link 4">
-          <HeaderMenuItem href="#">Sub-link 1</HeaderMenuItem>
-          <HeaderMenuItem href="#">Sub-link 2</HeaderMenuItem>
-          <HeaderMenuItem href="#">Sub-link 3</HeaderMenuItem>
-        </HeaderMenu>
-      </HeaderNavigation>
-    </>
+    <HeaderMenuItem isCurrentPage={pathname.endsWith(name)} href={href} onClick={onClick} ref={ref} icon={icon}>
+      <>
+      {name}
+      </>
+    </HeaderMenuItem>
+  );
+});
+
+const Menu = ({ routes, pathname }) => {
+  return (
+    <HeaderNavigation>
+      {routes
+        .filter((r) => r.sub)
+        .map((route) => (
+          <HeaderMenu key={route.name} menuLinkName={route.name} aria-label={route.name}>
+            {route.sub.map((r) => (
+              <Link key={r.name} href={route.path + r.path} passHref>
+                <HeaderMenuItemLink name={r.name} icon={r.icon} pathname={pathname}/>
+              </Link>
+            ))}
+          </HeaderMenu>
+        ))}
+    </HeaderNavigation>
   );
 };
 

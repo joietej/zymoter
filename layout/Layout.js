@@ -1,4 +1,6 @@
 import React from "react";
+
+import { useRouter } from "next/router";
 import {
   Header,
   HeaderContainer,
@@ -20,6 +22,7 @@ import PageHeader from "./PageHeader";
 import useWindowSize from "../hooks/windowSize";
 
 const Layout = ({ children, title }) => {
+  const { pathname } = useRouter();
   const windowSize = useWindowSize();
   return (
     <>
@@ -29,16 +32,21 @@ const Layout = ({ children, title }) => {
             <Header aria-label="zymoter">
               <HeaderMenuButton
                 aria-label="Open menu"
-                isCollapsible={windowSize.width < 1312}
+                isCollapsible
                 onClick={onClickSideNavExpand}
                 isActive={isSideNavExpanded}
               />
               <HeaderName href="#" prefix="Zymoter">
                 One
               </HeaderName>
-              <Menu />
+              <Menu routes={routes} pathname={pathname} />
               <Toolbar />
-              <Sidebar routes={routes} isExpanded={isSideNavExpanded} windowSize={windowSize} />
+              <Sidebar
+                routes={routes}
+                isExpanded={isSideNavExpanded}
+                windowSize={windowSize}
+                pathname={pathname}
+              />
             </Header>
           </>
         )}
