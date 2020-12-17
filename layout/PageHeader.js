@@ -3,7 +3,7 @@ import { Grid, Row, Column } from "carbon-components-react";
 
 const PageHeader = ({ title }) => {
   return (
-    <Grid>
+    <Grid narrow>
       <Row>
         <Column lg={12}>
           <h1>{title}</h1>

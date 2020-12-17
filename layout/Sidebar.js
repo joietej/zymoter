@@ -3,7 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { SideNav, SideNavItems } from "carbon-components-react";
 
-import Routes from "./Route";
+import Routes from "./Routes";
 
 const Sidebar = ({ routes, isExpanded, windowSize }) => {
   const { pathname } = useRouter();

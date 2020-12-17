@@ -14,7 +14,7 @@ import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Menu from "./Menu";
 
-import routes from "./routes";
+import routes from "../config/routes";
 import PageHeader from "./PageHeader";
 
 import useWindowSize from "../hooks/windowSize";
@@ -48,7 +48,7 @@ const Layout = ({ children, title }) => {
           fullWidth
           style={{ height: "100%", paddingRight: "0", paddingLeft: "0" }}
         >
-          <Row className={styles.banner}>
+          <Row className={styles.pageHeader}>
             <PageHeader title={title} />
           </Row>
           <Row className={styles.main}>{children}</Row>

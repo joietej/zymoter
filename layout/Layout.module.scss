@@ -5,19 +5,18 @@
   width: 100%;
   margin-left: 0;
   @media (min-width: 672px) {
-    padding-left:$layout-03;
+    padding-left: $layout-04;
   }
   @media (min-width: 1312px) {
-    padding-left:16rem;
+    padding-left: 16rem;
   }
-  padding-top:$layout-04;
-  transition: .11s ease;
+  padding-top: $layout-04;
+  transition: 0.11s ease;
   position: relative;
   height: calc(100vh - 48px);
 }
 
-
-.banner {
+.pageHeader {
   height: 25%;
   background-color: $ui-05;
   color: $inverse-01;
@@ -26,8 +25,8 @@
   justify-content: flex-end;
   border-bottom: 1px solid #393939;
   h1 {
-    margin-top:$layout-03;
-    margin-bottom:$layout-03;
+    margin-top: $layout-03;
+    margin-bottom: $layout-03;
   }
   div {
     margin-left: 0;
@@ -37,10 +36,16 @@
 
 .main {
   height: 65%;
+  margin-left: 0;
+  margin-right: 0;
+  div {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .footer {
   height: 10%;
+  margin-left: 0;
+  margin-right: 0;
 }
-
-
