@@ -5,7 +5,7 @@ const PageHeader = ({ title }) => {
   return (
     <Grid narrow>
       <Row>
-        <Column lg={12}>
+        <Column sm={4} md={8} lg={12}>
           <h1>{title}</h1>
         </Column>
       </Row>

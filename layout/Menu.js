@@ -16,9 +16,9 @@ const HeaderMenuItemLink = React.forwardRef(({ onClick, href, name, icon, pathna
   );
 });
 
-const Menu = ({ routes, pathname }) => {
+const Menu = ({ routes, pathname, windowSize }) => {
   return (
-    <HeaderNavigation>
+    <HeaderNavigation area-label="top menu" style={{marginLeft: windowSize.width < 1312 ? '0' : '7.5rem'}}>
       {routes
         .filter((r) => r.sub)
         .map((route) => (

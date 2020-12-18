@@ -3,7 +3,7 @@ import "../styles/app.scss";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Layout title={Component.title || 'NA'}>
+    <Layout routeName ={Component.routeName || Component.title}  title={Component.title || 'NA'}>
       <Component {...pageProps} />
     </Layout>
   );

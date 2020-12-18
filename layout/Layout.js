@@ -1,56 +1,24 @@
 import React from "react";
-
 import { useRouter } from "next/router";
-import {
-  Header,
-  HeaderContainer,
-  HeaderMenuButton,
-  HeaderName,
-  Grid,
-  Row,
-} from "carbon-components-react";
+import { Grid, Row } from "carbon-components-react";
 
 import styles from "./Layout.module.scss";
 
-import Sidebar from "./Sidebar";
-import Toolbar from "./Toolbar";
-import Menu from "./Menu";
-
-import routes from "../config/routes";
-import PageHeader from "./PageHeader";
-
 import useWindowSize from "../hooks/windowSize";
 
-const Layout = ({ children, title }) => {
+import AppHeader from "./AppHeader";
+import PageHeader from "./PageHeader";
+import PageTabs from "../components/PageTabs";
+import routes from "../config/routes";
+
+const Layout = ({ routeName, title, children }) => {
+  const route = routes.find((r) => r.name === routeName);
   const { pathname } = useRouter();
   const windowSize = useWindowSize();
+
   return (
     <>
-      <HeaderContainer
-        render={({ isSideNavExpanded, onClickSideNavExpand }) => (
-          <>
-            <Header aria-label="zymoter">
-              <HeaderMenuButton
-                aria-label="Open menu"
-                isCollapsible
-                onClick={onClickSideNavExpand}
-                isActive={isSideNavExpanded}
-              />
-              <HeaderName href="#" prefix="Zymoter">
-                One
-              </HeaderName>
-              <Menu routes={routes} pathname={pathname} />
-              <Toolbar />
-              <Sidebar
-                routes={routes}
-                isExpanded={isSideNavExpanded}
-                windowSize={windowSize}
-                pathname={pathname}
-              />
-            </Header>
-          </>
-        )}
-      ></HeaderContainer>
+      <AppHeader routes={routes} pathname={pathname} windowSize={windowSize} />
       <main className={styles.container}>
         <Grid
           fullWidth
@@ -59,7 +27,9 @@ const Layout = ({ children, title }) => {
           <Row className={styles.pageHeader}>
             <PageHeader title={title} />
           </Row>
-          <Row className={styles.main}>{children}</Row>
+          <Row className={styles.main}>
+            <PageTabs route={route}>{children}</PageTabs>
+          </Row>
         </Grid>
       </main>
       <footer className={styles.footer}></footer>

@@ -2,15 +2,18 @@
 
 .container {
   background: $ui-background;
-  width: 100%;
+  width: 100vw;
   margin-left: 0;
   @media (min-width: 672px) {
     padding-left: $layout-04;
   }
+  @media (min-width:1312px) {
+    padding-left: 16rem;
+  }
   padding-top: $layout-04;
   transition: 0.11s ease;
   position: relative;
-  height: calc(100vh - 48px);
+  height: 100vh;
 }
 
 .pageHeader {

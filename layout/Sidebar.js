@@ -8,8 +8,9 @@ const Sidebar = ({ routes, isExpanded, windowSize, pathname }) => {
   return (
     <SideNav
       aria-label="Side navigation"
-      isRail={windowSize.width > 672}
+      isRail={windowSize.width > 672 && windowSize.width < 1312}
       expanded={isExpanded}
+      isPersistent
     >
       <SideNavItems>
         <Routes

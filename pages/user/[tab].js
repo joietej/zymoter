@@ -1,15 +1,7 @@
 import React from "react";
-import routes from "../../config/routes";
-import PageTabs from "../../components/PageTabs";
-
-const route = routes.find((r) => r.name === "User");
 
 const User = () => {
-  return (
-    <PageTabs route={route}>
-        User
-    </PageTabs>
-  );
+  return <div>User</div>;
 };
 
 User.title = "User";
