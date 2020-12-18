@@ -6,7 +6,7 @@ import { tabsStyle } from "./styles";
 const PageTabs = ({ route, children }) => {
   const router = useRouter();
   const { tab } = router.query;
-  const tabs = route.sub || [];
+  const tabs = route?.sub || [];
   const selectedTabIndex = tabs.findIndex((r) => r.path === `/${tab}`);
   return (
     <Grid style={{ paddingRight: "0", paddingLeft: "0" }}>
