@@ -13,9 +13,14 @@ import routes from "../config/routes";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const { page, tab } = router.query;
+  const { page = "", tab } = router.query;
   const { pathname } = router;
-  const route = routes.find((r) => r.path === `/${page}`) || routes[0];
+
+  let route = routes.find((r) => r.path === `/${page}`);
+  if (pathname === "/_error") {
+    route = { path: pathname, name: "Error" };
+  }
+
   const windowSize = useWindowSize();
 
   return (

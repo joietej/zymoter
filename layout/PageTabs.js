@@ -12,21 +12,25 @@ const PageTabs = ({ route, children }) => {
     <Grid style={{ paddingRight: "0", paddingLeft: "0" }}>
       <Row>
         <Column lg={12}>
-          <Tabs
-            style={tabsStyle()}
-            selected={selectedTabIndex}
-            type="container"
-          >
-            {tabs.map((t) => (
-              <Tab
-                key={t.name}
-                label={t.name}
-                onClick={() => router.push(route.path + t.path)}
-              >
-                {children}
-              </Tab>
-            ))}
-          </Tabs>
+          {tabs.length > 0 ? (
+            <Tabs
+              style={tabsStyle()}
+              selected={selectedTabIndex}
+              type="container"
+            >
+              {tabs.map((t) => (
+                <Tab
+                  key={t.name}
+                  label={t.name}
+                  onClick={() => router.push(route.path + t.path)}
+                >
+                  {children}
+                </Tab>
+              ))}
+            </Tabs>
+          ) : (
+            children
+          )}
         </Column>
       </Row>
     </Grid>
