@@ -5,7 +5,7 @@ import { Grid, Row } from "carbon-components-react";
 import styles from "./Layout.module.scss";
 
 import useWindowSize from "../hooks/windowSize";
-
+import ErrorPage from "next/error";
 import AppHeader from "./AppHeader";
 import PageHeader from "./PageHeader";
 import PageTabs from "./PageTabs";
@@ -16,9 +16,10 @@ const Layout = ({ children }) => {
   const { page = "", tab } = router.query;
   const { pathname } = router;
 
-  let route = routes.find((r) => r.path === `/${page}`);
+  let route = routes.find((r) => r.path === `/${page}`) || routes[0];
+
   if (pathname === "/_error") {
-    route = { path: pathname, name: "Error" };
+    route = { path: "/_error", name: "Error" };
   }
 
   const windowSize = useWindowSize();

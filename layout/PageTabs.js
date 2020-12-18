@@ -12,19 +12,19 @@ const PageTabs = ({ route, children }) => {
     <Grid style={{ paddingRight: "0", paddingLeft: "0" }}>
       <Row>
         <Column lg={12}>
-          {tabs.length > 0 ? (
+          {tabs.length > 0 && selectedTabIndex > -1 ? (
             <Tabs
               style={tabsStyle()}
               selected={selectedTabIndex}
               type="container"
             >
-              {tabs.map((t) => (
+              {tabs.map((t, i) => (
                 <Tab
                   key={t.name}
                   label={t.name}
                   onClick={() => router.push(route.path + t.path)}
                 >
-                  {children}
+                  {i === selectedTabIndex ? children : <> </>}
                 </Tab>
               ))}
             </Tabs>
