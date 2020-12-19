@@ -9,29 +9,28 @@ const PageTabs = ({ route, children }) => {
   const tabs = route?.sub || [];
   const selectedTabIndex = tabs.findIndex((r) => r.path === `/${tab}`);
   return (
-    <Grid style={{ paddingRight: "0", paddingLeft: "0" }}>
-      <Row>
-        <Column lg={12}>
-          {tabs.length > 0 && selectedTabIndex > -1 ? (
-            <Tabs
-              style={tabsStyle()}
-              selected={selectedTabIndex}
-              type="container"
-            >
-              {tabs.map((t, i) => (
-                <Tab
-                  key={t.name}
-                  label={t.name}
-                  onClick={() => router.push(route.path + t.path)}
-                >
-                  {i === selectedTabIndex ? children : <> </>}
-                </Tab>
-              ))}
-            </Tabs>
-          ) : (
-            children
-          )}
-        </Column>
+    <Grid style={{ paddingRight: "0", paddingLeft: "0", width: "100%" }}>
+      <Row style={{marginLeft:'1rem'}}>
+        {tabs.length > 0 && selectedTabIndex > -1 ? (
+          <Tabs
+            style={tabsStyle()}
+            selected={selectedTabIndex}
+            type="container"
+          >
+            {tabs.map((t, i) => (
+              <Tab
+                style={{width:`${100/tabs.length}%`}}
+                key={t.name}
+                label={t.name}
+                onClick={() => router.push(route.path + t.path)}
+              >
+                {i === selectedTabIndex ? children : <> </>}
+              </Tab>
+            ))}
+          </Tabs>
+        ) : (
+          children
+        )}
       </Row>
     </Grid>
   );
