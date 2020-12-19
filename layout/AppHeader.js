@@ -43,6 +43,7 @@ const AppHeader = ({ routes, pathname, windowSize }) => {
               isExpanded={isSideNavExpanded}
               windowSize={windowSize}
               pathname={pathname}
+              onNavLinkClick={onClickSideNavExpand}
             />
           </Header>
         </>

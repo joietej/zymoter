@@ -4,7 +4,7 @@ import { SideNav, SideNavItems } from "carbon-components-react";
 
 import Routes from "./Routes";
 
-const Sidebar = ({ routes, isExpanded, windowSize, pathname }) => {
+const Sidebar = ({ routes, isExpanded, windowSize, pathname, onNavLinkClick }) => {
   return (
     <SideNav
       aria-label="Side navigation"
@@ -16,7 +16,7 @@ const Sidebar = ({ routes, isExpanded, windowSize, pathname }) => {
         <Routes
           routes={routes}
           pathname={pathname}
-          onClick={() => (isExpanded = false)}
+          onClick={onNavLinkClick}
         />
       </SideNavItems>
     </SideNav>
