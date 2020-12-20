@@ -1,6 +1,6 @@
 import React from "react";
 import { ContentSwitcher, Switch } from "carbon-components-react";
-import { sectionsStyle } from "./styles";
+import { sectionsContentStyle, sectionsStyle } from "./styles";
 
 const PageSections = ({
   sections,
@@ -11,11 +11,9 @@ const PageSections = ({
 }) => {
   return (
     <>
-      <div style={{ width: "100%",maxHeight: windowSize.height >= 1024 ? '70vh' : '80vh' , overflowY: "auto" }}>
-        {children}
-      </div>
+      <div style={sectionsContentStyle(null, windowSize)}>{children}</div>
       <ContentSwitcher
-        style={sectionsStyle(null,windowSize)}
+        style={sectionsStyle(null, windowSize)}
         selectedIndex={selectedSectionIndex}
         type="container"
       >

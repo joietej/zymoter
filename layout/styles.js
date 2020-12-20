@@ -21,3 +21,9 @@ export const sectionsStyle = (theme, windowSize) => ({
   lineHeight: 1.375,
   marginLeft: windowSize.width >= 672 ? "3rem" : "0",
 });
+
+export const sectionsContentStyle = (theme, windowSize) => ({ 
+    width: "100%",
+    maxHeight: windowSize.height >= 1024 ? '70vh' : '80vh' , 
+    overflowY: "auto"
+});
