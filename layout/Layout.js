@@ -5,11 +5,10 @@ import { Grid, Row } from "carbon-components-react";
 import styles from "./Layout.module.scss";
 
 import useWindowSize from "../hooks/windowSize";
-import ErrorPage from "next/error";
 import AppHeader from "./AppHeader";
 import PageHeader from "./PageHeader";
-import PageTabs from "./PageTabs";
 import routes from "../config/routes";
+import PageContent from "./PageContent";
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -36,11 +35,13 @@ const Layout = ({ children }) => {
             <PageHeader title={route.name} />
           </Row>
           <Row className={styles.main}>
-            <PageTabs route={route}>{children}</PageTabs>
+            <PageContent route={route} windowSize={windowSize}>
+              {children}
+            </PageContent>
           </Row>
         </Grid>
       </main>
-      <footer className={styles.footer}></footer>
+      {windowSize.width > 1312 && <footer className={styles.footer}></footer>}
     </>
   );
 };

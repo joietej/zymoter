@@ -2,7 +2,7 @@ import React from 'react'
 
 const New = () => {
     return (
-        <div>
+        <div style={{height:'100vh'}}>
             New Arrivals !
         </div>
     )
