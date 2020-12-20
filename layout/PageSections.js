@@ -6,13 +6,16 @@ const PageSections = ({
   sections,
   selectedSectionIndex,
   onSectionClick,
+  windowSize,
   children,
 }) => {
   return (
-    <div style={{width:'100%'}}>
-      <div style={{ height: "75vh", width: "100%", overflowY:'auto' }}>{children}</div>
+    <>
+      <div style={{ width: "100%",maxHeight: windowSize.height >= 1024 ? '70vh' : '80vh' , overflowY: "auto" }}>
+        {children}
+      </div>
       <ContentSwitcher
-        style={sectionsStyle()}
+        style={sectionsStyle(null,windowSize)}
         selectedIndex={selectedSectionIndex}
         type="container"
       >
@@ -26,7 +29,7 @@ const PageSections = ({
           ></Switch>
         ))}
       </ContentSwitcher>
-    </div>
+    </>
   );
 };
 

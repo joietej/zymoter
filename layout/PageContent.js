@@ -31,6 +31,7 @@ const PageContent = ({ route, windowSize, children }) => {
               sections={tabs}
               selectedSectionIndex={selectedTabIndex}
               onSectionClick={onTabClick}
+              windowSize={windowSize}
             >
               {children}
             </PageSections>

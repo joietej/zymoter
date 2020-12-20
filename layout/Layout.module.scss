@@ -17,7 +17,7 @@
 }
 
 .pageHeader {
-  @media(min-width: 1312px){
+  @media(min-height: 1366px){
     height: 25%;
   }
   height: 15%;
@@ -38,7 +38,10 @@
 }
 
 .main {
-  height: 65%;
+  @media(min-height: 1366px){
+    height: 75%;
+  }
+  height: 85%;
   margin-left: 0;
   margin-right: 0;
   div {
