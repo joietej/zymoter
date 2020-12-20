@@ -1,14 +1,14 @@
 @import "carbon-components/scss/globals/scss/vars.scss";
+@import "carbon-components/scss/globals/scss/typography.scss";
 
+.prod-head-05 {
+  @include carbon--type-style("productive-heading-05");
+}
 .container {
   background: $ui-background;
-  width: 100vw;
   margin-left: 0;
   @media (min-width: 672px) {
     padding-left: $layout-04;
-  }
-  @media (min-width:1312px) {
-    padding-left: 16rem;
   }
   padding-top: $layout-04;
   transition: 0.11s ease;
@@ -17,7 +17,7 @@
 }
 
 .pageHeader {
-  @media(min-height: 1366px){
+  @media (min-height: 1366px) {
     height: 25%;
   }
   height: 15%;
@@ -27,27 +27,14 @@
   flex-direction: column;
   justify-content: flex-end;
   border-bottom: 1px solid #393939;
-  h1 {
-    margin-top: $layout-03;
-    margin-bottom: $layout-03;
-  }
-  div {
-    margin-left: 0;
-    margin-right: 0;
-  }
+  padding-left: $layout-03;
 }
 
 .main {
-  @media(min-height: 1366px){
+  @media (min-height: 1366px) {
     height: 75%;
   }
   height: 85%;
-  margin-left: 0;
-  margin-right: 0;
-  div {
-    margin-left: 0;
-    margin-right: 0;
-  }
 }
 
 .footer {

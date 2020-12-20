@@ -1,4 +1,5 @@
 export const tabsStyle = (theme) => ({
+  justifyContent: 'flex-end',
   height: "3rem",
   width: "100%",
   backgroundColor: "#161616",
@@ -22,8 +23,15 @@ export const sectionsStyle = (theme, windowSize) => ({
   marginLeft: windowSize.width >= 672 ? "3rem" : "0",
 });
 
-export const sectionsContentStyle = (theme, windowSize) => ({ 
-    width: "100%",
-    maxHeight: windowSize.height >= 1024 ? '70vh' : '80vh' , 
-    overflowY: "auto"
+export const sectionsContentStyle = (theme, windowSize) => ({
+  width: "100%",
+  maxHeight: windowSize.height >= 1024 ? "70vh" : "80vh",
+  overflowY: "auto",
+});
+
+export const sideNavMenuStyle = (theme) => ({
+  fontSize: "1.25rem",
+  fontWeight: 400,
+  lineHeight: 1.4,
+  letterSpacing: 0,
 });

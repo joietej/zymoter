@@ -1,6 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Grid, Row } from "carbon-components-react";
 
 import styles from "./Layout.module.scss";
 
@@ -27,19 +26,14 @@ const Layout = ({ children }) => {
     <>
       <AppHeader routes={routes} pathname={pathname} windowSize={windowSize} />
       <main className={styles.container}>
-        <Grid
-          fullWidth
-          style={{ height: "100%", paddingRight: "0", paddingLeft: "0" }}
-        >
-          <Row className={styles.pageHeader}>
-            <PageHeader title={route.name} />
-          </Row>
-          <Row className={styles.main}>
-            <PageContent route={route} windowSize={windowSize}>
-              {children}
-            </PageContent>
-          </Row>
-        </Grid>
+        <div className={styles.pageHeader}>
+          <PageHeader title={route.name} />
+        </div>
+        <div className={styles.main}>
+          <PageContent route={route} windowSize={windowSize}>
+            {children}
+          </PageContent>
+        </div>
       </main>
       {windowSize.width > 1312 && <footer className={styles.footer}></footer>}
     </>

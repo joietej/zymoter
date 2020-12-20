@@ -29,7 +29,7 @@ const AppHeader = ({ routes, pathname, windowSize }) => {
           <Header aria-label="zymoter">
             <HeaderMenuButton
               aria-label="Open menu"
-              isCollapsible={windowSize.width < 1312}
+              isCollapsible
               onClick={onClickSideNavExpand}
               isActive={isSideNavExpanded}
             />

@@ -23,10 +23,7 @@ const HeaderMenuItemLink = React.forwardRef(
 
 const Menu = ({ routes, pathname, windowSize }) => {
   return (
-    <HeaderNavigation
-      area-label="top menu"
-      style={{ marginLeft: windowSize.width < 1312 ? "0" : "7.5rem" }}
-    >
+    <HeaderNavigation area-label="top menu">
       {routes
         .filter((r) => r.sub)
         .map((route) => (

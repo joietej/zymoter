@@ -1,6 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Grid, Row } from "carbon-components-react";
 import PageTabs from "./PageTabs";
 import PageSections from "./PageSections";
 
@@ -15,32 +14,30 @@ const PageContent = ({ route, windowSize, children }) => {
   };
 
   return (
-    <Grid style={{ paddingRight: "0", paddingLeft: "0", width: "100%" }}>
-      <Row style={{ marginLeft: "1rem" }}>
-        {tabs.length > 0 && selectedTabIndex > -1 ? (
-          windowSize.width > 1312 ? (
-            <PageTabs
-              tabs={tabs}
-              selectedTabIndex={selectedTabIndex}
-              onTabClick={onTabClick}
-            >
-              {children}
-            </PageTabs>
-          ) : (
-            <PageSections
-              sections={tabs}
-              selectedSectionIndex={selectedTabIndex}
-              onSectionClick={onTabClick}
-              windowSize={windowSize}
-            >
-              {children}
-            </PageSections>
-          )
+    <>
+      {tabs.length > 0 && selectedTabIndex > -1 ? (
+        windowSize.width > 1312 ? (
+          <PageTabs
+            tabs={tabs}
+            selectedTabIndex={selectedTabIndex}
+            onTabClick={onTabClick}
+          >
+            {children}
+          </PageTabs>
         ) : (
-          children
-        )}
-      </Row>
-    </Grid>
+          <PageSections
+            sections={tabs}
+            selectedSectionIndex={selectedTabIndex}
+            onSectionClick={onTabClick}
+            windowSize={windowSize}
+          >
+            {children}
+          </PageSections>
+        )
+      ) : (
+        children
+      )}
+    </>
   );
 };
 
