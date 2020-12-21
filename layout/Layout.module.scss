@@ -29,7 +29,9 @@
   border-bottom: 1px solid #393939;
   @media (min-width: 672px) {
     padding-left: $layout-04;
-    padding-bottom:0;
+  }
+  @media (min-width: 1312 px) {
+    padding-bottom: 0;
   }
   padding-left: $layout-01;
   padding-bottom: $layout-01;
