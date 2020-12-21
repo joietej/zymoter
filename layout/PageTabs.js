@@ -11,9 +11,12 @@ const PageTabs = ({ tabs, selectedTabIndex, onTabClick, children }) => {
           key={t.name}
           label={t.name}
           onClick={() => onTabClick(t.path)}
-
         >
-          {i === selectedTabIndex ? children : <> </>}
+          {i === selectedTabIndex ? (
+            <div style={{ padding: "2.5rem" }}>{children} </div>
+          ) : (
+            <div> </div>
+          )}
         </Tab>
       ))}
     </Tabs>

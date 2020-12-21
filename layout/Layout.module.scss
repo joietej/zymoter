@@ -27,7 +27,12 @@
   flex-direction: column;
   justify-content: flex-end;
   border-bottom: 1px solid #393939;
-  padding-left: $layout-03;
+  @media (min-width: 672px) {
+    padding-left: $layout-04;
+    padding-bottom:0;
+  }
+  padding-left: $layout-01;
+  padding-bottom: $layout-01;
 }
 
 .main {

@@ -24,6 +24,7 @@ export const sectionsStyle = (theme, windowSize) => ({
 });
 
 export const sectionsContentStyle = (theme, windowSize) => ({
+  padding:"1rem",
   width: "100%",
   maxHeight: windowSize.height >= 1024 ? "70vh" : "80vh",
   overflowY: "auto",
