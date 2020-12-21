@@ -4,7 +4,11 @@ import Layout from "../layout/Layout";
 import "../styles/app.scss";
 
 const MyApp = ({ Component, pageProps }) => {
-  useServiceWorker();
+  
+  const confirmFunc = () =>
+    confirm("A newer version of this web app is available, reload to update?");
+
+  useServiceWorker(confirmFunc);
   return (
     <>
       <Head>

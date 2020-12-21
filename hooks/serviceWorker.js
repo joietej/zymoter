@@ -1,5 +1,5 @@
 import React from "react";
-const useServiceWorker = () => {
+const useServiceWorker = (confirmActionFunc) => {
   React.useEffect(() => {
     if (
       typeof window !== "undefined" &&
@@ -7,22 +7,6 @@ const useServiceWorker = () => {
       window.workbox !== undefined
     ) {
       const wb = window.workbox;
-      // add event listeners to handle any of PWA lifecycle event
-      // https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-window.Workbox#events
-      wb.addEventListener("installed", (event) => {
-        console.debug(`Event ${event.type} is triggered.`);
-        console.debug(event);
-      });
-
-      wb.addEventListener("controlling", (event) => {
-        console.debug(`Event ${event.type} is triggered.`);
-        console.debug(event);
-      });
-
-      wb.addEventListener("activated", (event) => {
-        console.debug(`Event ${event.type} is triggered.`);
-        console.debug(event);
-      });
 
       // A common UX pattern for progressive web apps is to show a banner when a service worker has updated and waiting to install.
       // NOTE: MUST set skipWaiting to false in next.config.js pwa object
@@ -31,11 +15,7 @@ const useServiceWorker = () => {
         // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
         // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
         // You may want to customize the UI prompt accordingly.
-        if (
-          confirm(
-            "A newer version of this web app is available, reload to update?"
-          )
-        ) {
+        if (confirmActionFunc()) {
           wb.addEventListener("controlling", (event) => {
             window.location.reload();
           });
@@ -58,21 +38,6 @@ const useServiceWorker = () => {
         console.log(`Event ${event.type} is triggered.`);
         console.log(event);
       });
-
-      /*
-          wb.addEventListener('redundant', event => {
-            console.log(`Event ${event.type} is triggered.`)
-            console.log(event)
-          })
-          wb.addEventListener('externalinstalled', event => {
-            console.log(`Event ${event.type} is triggered.`)
-            console.log(event)
-          })
-          wb.addEventListener('externalactivated', event => {
-            console.log(`Event ${event.type} is triggered.`)
-            console.log(event)
-          })
-          */
 
       // never forget to call register as auto register is turned off in next.config.js
       wb.register();
