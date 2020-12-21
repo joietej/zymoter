@@ -12,6 +12,7 @@
     "carbon-components-react": "^7.25.0",
     "carbon-icons": "^7.0.7",
     "next": "10.0.3",
+    "next-pwa": "^5.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.30.0"
