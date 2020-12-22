@@ -1,10 +1,10 @@
 import React from 'react'
 
-const New = () => {
+const Detox = () => {
     return (
         <div>
-            New Content
+            Detox Content
         </div>
     )
 }
-export default New
+export default Detox

@@ -1,10 +1,10 @@
 import React from 'react'
 
-const New = () => {
+const Home = () => {
     return (
         <div>
-            New Content
+            Home Content
         </div>
     )
 }
-export default New
+export default Home

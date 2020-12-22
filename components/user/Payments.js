@@ -1,10 +1,10 @@
 import React from 'react'
 
-const New = () => {
+const Payments = () => {
     return (
         <div>
-            New Content
+            Payments Content
         </div>
     )
 }
-export default New
+export default Payments

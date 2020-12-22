@@ -1,11 +1,11 @@
-import {
+const {
   Home32,
   Product32,
   Account32,
   Categories32,
   Settings32,
   LicenseGlobal32
-} from "@carbon/icons-react";
+} = require("@carbon/icons-react");
 
 const routes = [
   { name: "Home", icon: Home32, path: "/", position: "top", title: "Welcome !" },
@@ -46,4 +46,4 @@ const routes = [
   { name: "Legal", path: "/me", icon: LicenseGlobal32, position: "bottom", title: 'Who am I ?' },
 ];
 
-export default routes;
+module.exports =  routes;

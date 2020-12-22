@@ -1,10 +1,10 @@
 import React from 'react'
 
-const New = () => {
+const Legal = () => {
     return (
         <div>
-            New Content
+            Legal Content
         </div>
     )
 }
-export default New
+export default Legal

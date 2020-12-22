@@ -3,9 +3,8 @@ import React from 'react'
 const Deals = () => {
     return (
         <div>
-            Awesome Deals !
+            Deals Content
         </div>
     )
 }
-
 export default Deals

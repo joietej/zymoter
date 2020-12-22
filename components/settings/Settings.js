@@ -1,10 +1,10 @@
 import React from 'react'
 
-const New = () => {
+const Settings = () => {
     return (
         <div>
-            New Content
+            Settings Content
         </div>
     )
 }
-export default New
+export default Settings

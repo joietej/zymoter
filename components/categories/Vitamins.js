@@ -1,10 +1,10 @@
 import React from 'react'
 
-const New = () => {
+const Vitamins = () => {
     return (
         <div>
-            New Content
+            Vitamins Content
         </div>
     )
 }
-export default New
+export default Vitamins
