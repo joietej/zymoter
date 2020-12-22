@@ -1,0 +1,15 @@
+import React from "react";
+
+const PageHeader = ({ route, subRoute }) => {
+  
+  const title = subRoute
+    ? subRoute.title || subRoute.name
+    : route.title || route.name;
+  return (
+    <div>
+      <h1>{title}</h1>
+    </div>
+  );
+};
+
+export default PageHeader;

@@ -1,8 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-
-import "../../config/routes";
+import useRoutes from "../../hooks/routes";
 
 const importComponent = (folder, component) =>
   dynamic(
@@ -14,8 +12,7 @@ const importComponent = (folder, component) =>
   );
 
 const View = () => {
-  const router = useRouter();
-  const { page, tab } = router.query;
+  const { page, tab } = useRoutes();
   const Component = importComponent(
     page,
     `${tab?.charAt(0).toUpperCase()}${tab?.substring(1)}`

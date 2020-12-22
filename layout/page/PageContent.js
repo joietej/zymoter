@@ -3,15 +3,9 @@ import { useRouter } from "next/router";
 import PageTabs from "./PageTabs";
 import PageSections from "./PageSections";
 
-const PageContent = ({ route, windowSize, children }) => {
-  const router = useRouter();
-  const { tab } = router.query;
+const PageContent = ({ route, tab, windowSize, onTabClick, children }) => {
   const tabs = route?.sub || [];
   const selectedTabIndex = tabs.findIndex((r) => r.path === `/${tab}`);
-
-  const onTabClick = (path) => {
-    router.push(route.path + path);
-  };
 
   return (
     <>

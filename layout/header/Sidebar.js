@@ -2,9 +2,15 @@ import React from "react";
 
 import { SideNav, SideNavItems } from "carbon-components-react";
 
-import Routes from "./Routes";
+import RoutesContainer from "../routes/RoutesContainer";
 
-const Sidebar = ({ routes, isExpanded, windowSize, pathname, onNavLinkClick }) => {
+const Sidebar = ({
+  routes,
+  isExpanded,
+  windowSize,
+  pathname,
+  onNavLinkClick,
+}) => {
   return (
     <SideNav
       aria-label="Side navigation"
@@ -12,7 +18,7 @@ const Sidebar = ({ routes, isExpanded, windowSize, pathname, onNavLinkClick }) =
       expanded={isExpanded}
     >
       <SideNavItems>
-        <Routes
+        <RoutesContainer
           routes={routes}
           pathname={pathname}
           onClick={onNavLinkClick}
