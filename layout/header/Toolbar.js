@@ -21,10 +21,6 @@ const Toolbar = () => {
   const [notifications, setNotifications] = useNotifications();
   const [isExpanded, setIsExpanded] = React.useState(false);
 
-  React.useEffect(() => {
-    setNotifications({ title: "Test Notification" });
-  }, []);
-
   return (
     <>
       <HeaderGlobalBar>
