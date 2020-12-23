@@ -10,7 +10,7 @@ const Notifications = ({ notifications, onClose }) => {
           title={n.title || "Notification"}
           subtitle={n.subtitle || ""}
           kind={n.kind || "info-square"}
-          onCloseButtonClick={() => onClose(notifications.splice(i, 1))}
+          onCloseButtonClick={() => onClose([...notifications].splice(i,1))}
         ></InlineNotification>
       ))}
     </>

@@ -35,10 +35,10 @@ const Toolbar = () => {
           aria-label="Notifications"
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          {notifications.length > 1 ? (
-            <Notification20 />
-          ) : (
+          {notifications.length > 0 ? (
             <NotificationNew20 />
+          ) : (
+            <Notification20 />
           )}
         </HeaderGlobalAction>
         <HeaderGlobalAction aria-label="App Switcher">
