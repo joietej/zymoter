@@ -3,8 +3,6 @@ import {
   HeaderGlobalBar,
   HeaderGlobalAction,
   HeaderPanel,
-  Tag,
-  Row,
 } from "carbon-components-react";
 
 import {
