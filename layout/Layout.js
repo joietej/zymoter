@@ -3,15 +3,22 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "./Layout.module.scss";
 
+import { InlineNotification, NotificationActionButton } from "carbon-components-react";
+
+import routes from "../config/routes";
+
 import useWindowSize from "../hooks/windowSize";
+import useRoutes from "../hooks/routes";
+import { useAppNotification } from "../hooks/state/notifications";
+
 import AppHeader from "./header/AppHeader";
 import PageHeader from "./page/PageHeader";
-import routes from "../config/routes";
+
 import PageContent from "./page/PageContent";
-import useRoutes from "../hooks/routes";
 
 const Layout = ({ children }) => {
   const { route, subRoute, pathname, tab, onTabClick } = useRoutes();
+  const [appNotification, _] = useAppNotification();
   const windowSize = useWindowSize();
 
   return (
@@ -35,6 +42,19 @@ const Layout = ({ children }) => {
           </PageContent>
         </div>
       </main>
+      {appNotification && (
+        <InlineNotification style={{justifyContent:'center'}}
+          title={appNotification.title || "Notification"}
+          subtitle={appNotification.subtitle || ""}
+          kind={appNotification.kind || "info-square"}
+          onCloseButtonClick={appNotification.onClose}
+          actions={
+            <NotificationActionButton onClick={appNotification.onAction}>
+              {appNotification.actionText || "Action"}
+            </NotificationActionButton>
+          }
+        ></InlineNotification>
+      )}
       {windowSize.width > 1312 && <footer className={styles.footer}></footer>}
     </>
   );

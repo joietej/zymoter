@@ -2,7 +2,12 @@ import { atom } from "recoil";
 
 const notificationsState = atom({
   key: "notificationsState",
-  default: [{ title: "Test Notification" }],
+  default: [],
+});
+
+export const appNotificationState = atom({
+  key: "appNotiifcationState",
+  defualt: {},
 });
 
 export default notificationsState;

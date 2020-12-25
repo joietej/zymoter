@@ -18,7 +18,7 @@ const Notifications = ({ notifications, onClose }) => {
           subtitle={n.subtitle || ""}
           kind={n.kind || "info-square"}
           onCloseButtonClick={() => onClose(removeItem(notifications, i))}
-        ></ToastNotification>
+        />
       ))}
     </>
   );
