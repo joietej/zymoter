@@ -1,10 +1,7 @@
-import React from 'react'
+import React from "react";
+import ProductList from "./ProductList";
 
-const New = () => {
-    return (
-        <div>
-            New Content
-        </div>
-    )
-}
-export default New
+const New = ({ data }) => {
+  return <ProductList products={data} />;
+};
+export default New;
