@@ -1,7 +1,22 @@
 import React from "react";
+import {
+  StructuredListWrapper,
+  StructuredListHead,
+  StructuredListBody,
+} from "carbon-components-react";
 
-const ProductList = ({tab}) => {
-  return <div>{`List of Products | ${tab}`}</div>;
+import ProductItem from "./ProductItem";
+
+const ProductList = ({ products }) => {
+  return (
+    <StructuredListWrapper>
+      <StructuredListBody>
+        {products.map((p) => (
+          <ProductItem key={p.id} product={p} />
+        ))}
+      </StructuredListBody>
+    </StructuredListWrapper>
+  );
 };
 
 export default ProductList;

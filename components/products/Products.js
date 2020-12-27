@@ -1,12 +1,9 @@
 import React from "react";
+import ProductList from "./ProductList";
 
 const Products = ({ data }) => {
   return (
-    <ul>
-      {data.map((p) => (
-        <li key={p.id}>{p.name}</li>
-      ))}
-    </ul>
+    <ProductList products={data} />
   );
 };
 export default Products;
