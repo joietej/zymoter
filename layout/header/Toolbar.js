@@ -10,14 +10,26 @@ import {
   Search20,
   Notification20,
   NotificationNew20,
+  ShoppingCart20,
 } from "@carbon/icons-react";
 
 import Notifications from "../notifications/Notifications";
 import useNotifications from "../../hooks/state/notifications";
+import Cart from "../cart/Cart";
 
 const Toolbar = () => {
   const [notifications, setNotifications] = useNotifications();
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [headerPanelType, setHeaderPanelType] = React.useState("");
+
+  const toggleHeaderPanel = (show, type) => {
+    if (headerPanelType === type) {
+      setIsExpanded(!isExpanded);
+    } else {
+      setIsExpanded(show);
+      setHeaderPanelType(type);
+    }
+  };
 
   return (
     <>
@@ -26,8 +38,14 @@ const Toolbar = () => {
           <Search20 />
         </HeaderGlobalAction>
         <HeaderGlobalAction
+          aria-label="Cart"
+          onClick={() => toggleHeaderPanel(true, "cart")}
+        >
+          <ShoppingCart20 />
+        </HeaderGlobalAction>
+        <HeaderGlobalAction
           aria-label="Notifications"
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={() => toggleHeaderPanel(true, "notifications")}
         >
           {notifications.length > 0 ? (
             <NotificationNew20 />
@@ -40,10 +58,14 @@ const Toolbar = () => {
         </HeaderGlobalAction>
       </HeaderGlobalBar>
       <HeaderPanel aria-label="right panel" expanded={isExpanded}>
-        <Notifications
-          notifications={notifications}
-          onClose={(n) => setNotifications(n)}
-        />
+        {headerPanelType === "notifications" ? (
+          <Notifications
+            notifications={notifications}
+            onClose={(n) => setNotifications(n)}
+          />
+        ) : (
+          <Cart />
+        )}
       </HeaderPanel>
     </>
   );

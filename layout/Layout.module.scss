@@ -7,7 +7,7 @@
 .container {
   background: $ui-background;
   margin-left: 0;
-  @media (min-width: 672px) {
+  @media (min-width: 768px) {
     padding-left: $layout-04;
   }
   padding-top: $layout-04;
@@ -28,7 +28,10 @@
   justify-content: flex-end;
   border-bottom: 1px solid #393939;
   @media (min-width: 672px) {
-    padding-left: $layout-04;
+    padding-left: $layout-03;
+  }
+  @media (min-width: 769px) {
+    padding-left: 5rem;
   }
   @media (min-width: 1312 px) {
     padding-bottom: 0;

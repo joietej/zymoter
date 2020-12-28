@@ -20,12 +20,12 @@ export const sectionsStyle = (theme, windowSize) => ({
   fontSize: "1rem",
   fontWeight: 400,
   lineHeight: 1.375,
-  marginLeft: windowSize.width >= 672 ? "3rem" : "0",
+  marginLeft: windowSize.width >= 768 ? "3rem" : "0",
 });
 
-export const sectionsContentStyle = (theme, windowSize) => ({
-  padding: windowSize.width >= 672 ? "3rem" : "1rem",
+export const sectionsContentStyle = (theme, { width, height }) => ({
+  padding: width > 768 ? "3rem" : "1rem",
   width: "100%",
-  maxHeight: windowSize.height >= 1024 ? "70vh" : "80vh",
+  maxHeight: height >= 1024 ? "70vh" : "80vh",
   overflowY: "auto",
 });

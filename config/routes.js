@@ -4,7 +4,8 @@ const {
   Account32,
   Categories32,
   Settings32,
-  LicenseGlobal32
+  LicenseGlobal32,
+  ShoppingBag32
 } = require("@carbon/icons-react");
 
 const routes = [
@@ -41,7 +42,7 @@ const routes = [
       { name: "Orders", path: "/orders" },
       { name: "Payments", path: "/payments" },
     ],
-  },
+  }, 
   { name: "Settings", path: "/settings", icon: Settings32, position: "bottom" },
   { name: "Legal", path: "/me", icon: LicenseGlobal32, position: "bottom", title: 'Who am I ?' },
 ];

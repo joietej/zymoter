@@ -14,7 +14,7 @@ const Sidebar = ({
   return (
     <SideNav
       aria-label="Side navigation"
-      isRail={windowSize.width > 672}
+      isRail={windowSize.width > 768}
       expanded={isExpanded}
     >
       <SideNavItems>
