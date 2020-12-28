@@ -1,63 +1,13 @@
-export const get = async (url, token) => {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        Accept: "application/json",
-        'X-Authorization': token
-      },
-    });
-    if (!res.ok) {
-      throw new Error(res.statusText);
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+import { get } from "./core";
+
+export const fetchAll = async (provider, page) => {
+  const { host, key } = provider;
+  const res = await get(`${host}/${page}`,key);
+  return res?.data || [];
 };
 
-export const getImage = async (url) => {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        Accept: "image/webp,image/apng",
-      },
-    });
-    if (!res.ok) {
-      throw new Error(res.statusText);
-    }
-    const blob = await res.blob();
-    const data = await convertBlobToBase64(blob);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const post = async (url, payload) => {
-  try {
-    const res = await fetch(url, {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) {
-      throw new Error(res.statusText);
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const convertBlobToBase64 = (blob) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onerror = reject;
-    reader.onload = () => {
-      resolve(reader.result);
-    };
-    reader.readAsDataURL(blob);
-  });
+export const fetchByQuery = async (provider, page, query) => {
+  const { host, key } = provider;
+  const res = await get(`${host}/${page}?${query}`, key);
+  return res?.data || [];
 };
