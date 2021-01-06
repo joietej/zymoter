@@ -7,40 +7,40 @@ const commerceConfig = {
   pages: [
     {
       name: "products",
-      service: "fetchProducts",
+      service: "Products",
     },
     {
       name: "products",
-      service: "fetchProductsByCategory",
+      service: "ProductsByCategory",
       query: "new",
     },
     {
       name: "products",
-      service: "fetchProductsByCategory",
+      service: "ProductsByCategory",
       query: "deals",
     },
     {
       name: "products",
-      service: "fetchProductsByCategory",
+      service: "ProductsByCategory",
       query: "top",
     },
     {
       name: "categories",
-      service: "fetchCategories",
+      service: "Categories",
     },
     {
       name: "categories",
-      service: "fetchProductsByCategory",
+      service: "ProductsByCategory",
       query: "oils",
     },
     {
       name: "categories",
-      service: "fetchProductsByCategory",
+      service: "ProductsByCategory",
       query: "vitamins",
     },
     {
       name: "categories",
-      service: "fetchProductsByCategory",
+      service: "ProductsByCategory",
       query: "detox",
     },
   ],

@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "./Layout.module.scss";
 
@@ -16,11 +15,27 @@ import PageHeader from "./page/PageHeader";
 
 import PageContent from "./page/PageContent";
 
+
 const Layout = ({ children }) => {
   const { route, subRoute, pathname, tab, onTabClick } = useRoutes();
   const [appNotification, _] = useAppNotification();
   const windowSize = useWindowSize();
 
+  const renderNotification = (notification) => (
+    <InlineNotification key={notification.title} style={{justifyContent:'center'}}
+      title={notification.title || "Notification"}
+      subtitle={notification.subtitle || ""}
+      kind={notification.kind || "info-square"}
+      onCloseButtonClick={notification.onClose}
+      actions={
+        notification.onAction && (<NotificationActionButton onClick={notification.onAction}>
+          {notification.actionText || "Action"}
+        </NotificationActionButton>)
+      }
+    ></InlineNotification>
+  )
+
+  console.log(appNotification);
   return (
     <>
       <Head>
@@ -42,19 +57,7 @@ const Layout = ({ children }) => {
           </PageContent>
         </div>
       </main>
-      {appNotification && (
-        <InlineNotification style={{justifyContent:'center'}}
-          title={appNotification.title || "Notification"}
-          subtitle={appNotification.subtitle || ""}
-          kind={appNotification.kind || "info-square"}
-          onCloseButtonClick={appNotification.onClose}
-          actions={
-            <NotificationActionButton onClick={appNotification.onAction}>
-              {appNotification.actionText || "Action"}
-            </NotificationActionButton>
-          }
-        ></InlineNotification>
-      )}
+      {appNotification && renderNotification(appNotification)}
       {windowSize.width > 1312 && <footer className={styles.footer}></footer>}
     </>
   );

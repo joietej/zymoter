@@ -3,6 +3,7 @@ import {
   HeaderGlobalBar,
   HeaderGlobalAction,
   HeaderPanel,
+  Tag
 } from "carbon-components-react";
 
 import {
@@ -13,14 +14,20 @@ import {
   ShoppingCart20,
 } from "@carbon/icons-react";
 
+import { blue40 } from '@carbon/colors';
+
 import Notifications from "../notifications/Notifications";
+
 import useNotifications from "../../hooks/state/notifications";
+import useCart from "../../hooks/state/cart";
+
 import Cart from "../cart/Cart";
 
 const Toolbar = () => {
   const [notifications, setNotifications] = useNotifications();
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [headerPanelType, setHeaderPanelType] = React.useState("");
+  const { cart } = useCart();
 
   const toggleHeaderPanel = (show, type) => {
     if (headerPanelType === type) {
@@ -41,7 +48,10 @@ const Toolbar = () => {
           aria-label="Cart"
           onClick={() => toggleHeaderPanel(true, "cart")}
         >
-          <ShoppingCart20 />
+          <>
+            <ShoppingCart20 />
+            {cart?.line_items?.length > 0 && (<span style={{ color: blue40 }}>🎁</span>)}
+          </>
         </HeaderGlobalAction>
         <HeaderGlobalAction
           aria-label="Notifications"
@@ -50,8 +60,8 @@ const Toolbar = () => {
           {notifications.length > 0 ? (
             <NotificationNew20 />
           ) : (
-            <Notification20 />
-          )}
+              <Notification20 />
+            )}
         </HeaderGlobalAction>
         <HeaderGlobalAction aria-label="App Switcher">
           <AppSwitcher20 />
@@ -64,8 +74,8 @@ const Toolbar = () => {
             onClose={(n) => setNotifications(n)}
           />
         ) : (
-          <Cart />
-        )}
+            <Cart cart={cart} />
+          )}
       </HeaderPanel>
     </>
   );

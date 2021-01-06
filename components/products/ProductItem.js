@@ -2,8 +2,6 @@ import React from "react";
 import stripHtml from "string-strip-html";
 
 import {
-  StructuredListRow,
-  StructuredListCell,
   Tile,
   ExpandableTile,
   TileAboveTheFoldContent,
@@ -69,7 +67,7 @@ const ProductItem = ({ product, onAdd = null, onRemove = null }) => {
               iconDescription="Remove from cart"
               hasIconOnly
               size="sm"
-              onClick={() => onRemove(product)}
+              onClick={() => onRemove(product.id)}
             />
           )}
           {onAdd && (
@@ -79,7 +77,7 @@ const ProductItem = ({ product, onAdd = null, onRemove = null }) => {
               iconDescription="Add to cart"
               hasIconOnly
               size="sm"
-              onClick={() => onAdd(product)}
+              onClick={() => onAdd(product.id)}
             />
           )}
         </div>
