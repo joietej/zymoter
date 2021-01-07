@@ -12,7 +12,7 @@ const Dialog = () => {
 
   const next = (e) => {
     e.preventDefault();
-    if (index < 3) {
+    if (index < 2) {
       setIndex(index + 1);
     } else {
       setIsOpen(false);
@@ -31,7 +31,7 @@ const Dialog = () => {
   return (
     <Modal
       open={isOpen}
-      primaryButtonText={index === 3 ? "Submit" : "Next"}
+      primaryButtonText={index === 2 ? "Submit" : "Next"}
       secondaryButtonText={index === 0 ? "Cancel" : "Previous"}
       onRequestSubmit={next}
       onSecondarySubmit={previous}
