@@ -30,6 +30,9 @@ const Dialog = () => {
 
   return (
     <Modal
+      title="Checkout"
+      modalLabel="1 Items"
+      modalHeading="Checkout"
       open={isOpen}
       primaryButtonText={index === 2 ? "Submit" : "Next"}
       secondaryButtonText={index === 0 ? "Cancel" : "Previous"}
@@ -38,6 +41,7 @@ const Dialog = () => {
       onRequestClose={() => setIsOpen(false)}
       hasForm
       preventCloseOnClickOutside
+      hasScrollingContent
     >
       <Checkout index={index} />
     </Modal>
