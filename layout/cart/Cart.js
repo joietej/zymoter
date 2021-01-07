@@ -1,5 +1,7 @@
 import React from "react";
-import { white } from '@carbon/colors';
+import { useRecoilState } from "recoil";
+
+import { white } from "@carbon/colors";
 
 import {
   StructuredListWrapper,
@@ -13,18 +15,32 @@ import {
 
 import CartItem from "./CartItem";
 
-const Cart = ({cart}) => {
-  
+import checkoutDialogState from "../../recoil/atoms/checkout";
+
+const Cart = ({ cart }) => {
+  const [_, setCheckoutDialogOpen] = useRecoilState(
+    checkoutDialogState
+  );
+
   if (!cart || !cart.line_items || cart.line_items < 1) {
     return <div>Empty</div>;
   }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: "space-between", height:'100%' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: "100%",
+      }}
+    >
       <StructuredListWrapper>
         <StructuredListHead>
           <StructuredListRow head>
             <StructuredListCell head>
-              <h6 style={{color:white}}>Total Items : {cart.line_items.length}</h6>
+              <h6 style={{ color: white }}>
+                Total Items : {cart.line_items.length}
+              </h6>
             </StructuredListCell>
           </StructuredListRow>
         </StructuredListHead>
@@ -38,11 +54,16 @@ const Cart = ({cart}) => {
           ))}
           <StructuredListRow>
             <StructuredListCell>
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: "space-between" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
                 <h6>Subtotal:</h6>
-                <h6>
-                  {cart.subtotal.formatted_with_symbol}
-                </h6>
+                <h6>{cart.subtotal.formatted_with_symbol}</h6>
               </div>
             </StructuredListCell>
           </StructuredListRow>
@@ -50,10 +71,11 @@ const Cart = ({cart}) => {
       </StructuredListWrapper>
       <ButtonSet>
         <Button kind="secondary">Delete All</Button>
-        <Button kind="primary">Checkout</Button>
+        <Button kind="primary" onClick={() => setCheckoutDialogOpen(true)}>
+          Checkout
+        </Button>
       </ButtonSet>
     </div>
-
   );
 };
 export default Cart;

@@ -3,7 +3,6 @@ import {
   HeaderGlobalBar,
   HeaderGlobalAction,
   HeaderPanel,
-  Tag
 } from "carbon-components-react";
 
 import {
@@ -14,7 +13,7 @@ import {
   ShoppingCart20,
 } from "@carbon/icons-react";
 
-import { blue40 } from '@carbon/colors';
+import { blue40 } from "@carbon/colors";
 
 import Notifications from "../notifications/Notifications";
 
@@ -50,7 +49,9 @@ const Toolbar = () => {
         >
           <>
             <ShoppingCart20 />
-            {cart?.line_items?.length > 0 && (<span style={{ color: blue40 }}>🎁</span>)}
+            {cart?.line_items?.length > 0 && (
+              <span style={{ color: blue40 }}>{cart.line_items.length}</span>
+            )}
           </>
         </HeaderGlobalAction>
         <HeaderGlobalAction
@@ -60,8 +61,8 @@ const Toolbar = () => {
           {notifications.length > 0 ? (
             <NotificationNew20 />
           ) : (
-              <Notification20 />
-            )}
+            <Notification20 />
+          )}
         </HeaderGlobalAction>
         <HeaderGlobalAction aria-label="App Switcher">
           <AppSwitcher20 />
@@ -74,8 +75,8 @@ const Toolbar = () => {
             onClose={(n) => setNotifications(n)}
           />
         ) : (
-            <Cart cart={cart} />
-          )}
+          <Cart cart={cart} />
+        )}
       </HeaderPanel>
     </>
   );
