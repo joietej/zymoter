@@ -4,7 +4,7 @@ import {
   ToastNotification,
   NotificationActionButton,
 } from "carbon-components-react";
-import { useAppNotification } from "../../hooks/state/notifications";
+import { useAppNotification } from "../../store/hooks/notifications";
 
 const AppNotification = () => {
   const [notification, _] = useAppNotification();

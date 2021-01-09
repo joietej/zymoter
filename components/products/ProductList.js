@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Row, Column } from "carbon-components-react";
 
 import ProductItem from "./ProductItem";
-import useCart from "../../hooks/state/cart";
+import useCart from "../../store/hooks/cart";
 
 const ProductList = ({ products }) => {
   const { addItem, removeItem } = useCart();

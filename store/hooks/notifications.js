@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
-import { appNotificationState } from "../../recoil/atoms/notifications";
-import notificationsSelector from "../../recoil/selectors/notificationsSelector";
+import { appNotificationState } from "../../store/state/notificationsState";
+import notificationsSelector from "../../store/selectors/notificationsSelector";
 
 const useNotifications = () => {
   const [notifications, setNotifications] = useRecoilState(

@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 
 import { Modal } from "carbon-components-react";
 
-import checkoutDialogState from "../../recoil/atoms/checkout";
+import checkoutDialogState from "../../store/state/checkoutState";
 import Checkout from "./Checkout";
 
 const Dialog = () => {

@@ -1,5 +1,5 @@
 import { selector, DefaultValue } from "recoil";
-import notificationsState from "../atoms/notifications";
+import notificationsState from "../state/notificationsState";
 
 const notificationsSelector = selector({
   key: "notificationsSelector",

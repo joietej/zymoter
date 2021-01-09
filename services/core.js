@@ -1,17 +1,17 @@
 export const get = async (url, token) => {
-  console.log('📩', url);
+  console.log("📩", url);
   try {
     const res = await fetch(url, {
       headers: {
         Accept: "application/json",
-        'X-Authorization': token
+        "X-Authorization": token,
       },
     });
     if (!res.ok) {
       throw new Error(res.statusText);
     }
     const data = await res.json();
-    console.log('📦', data);
+    console.log("📦", data);
     return data;
   } catch (error) {
     console.log(error);
@@ -36,10 +36,10 @@ export const getImage = async (url) => {
   }
 };
 
-export const post = async (url, payload) => {
+export const post = async (url, token, payload) => {
   try {
     const res = await fetch(url, {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-Authorization": token },
       method: "POST",
       body: JSON.stringify(payload),
     });

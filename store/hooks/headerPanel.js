@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import headerPanelState from "../../recoil/atoms/headerPanel";
+import headerPanelState from "../../store/state/headerPanel";
 
 const useHeaderPanelState = () => {
   const [isExpanded, setExpanded] = useRecoilState(headerPanelState);

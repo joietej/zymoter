@@ -15,7 +15,7 @@ import {
 
 import CartItem from "./CartItem";
 
-import checkoutDialogState from "../../recoil/atoms/checkout";
+import checkoutDialogState from "../../store/state/checkoutState";
 
 const Cart = ({ cart }) => {
   const [_, setCheckoutDialogOpen] = useRecoilState(

@@ -1,12 +1,12 @@
 import React from "react";
-import DebugObserver from "../recoil/debugObserver";
+import DebugObserver from "../store/debugObserver";
 
 import Head from "next/head";
 
 import Layout from "../layout/Layout";
 
 import useServiceWorker from "../hooks/serviceWorker";
-import { useAppNotification } from "../hooks/state/notifications";
+import { useAppNotification } from "../store/hooks/notifications";
 
 const updateApp = (update) => {
   const wb = window.workbox;

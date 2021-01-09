@@ -1,6 +1,6 @@
 import { selector, DefaultValue } from "recoil";
-import cartState from "../atoms/cart";
-import { appNotificationState } from "../atoms/notifications";
+import cartState from "../state/cartState";
+import { appNotificationState } from "../state/notificationsState";
 
 const cartSelector = selector({
   key: "cartSelector",

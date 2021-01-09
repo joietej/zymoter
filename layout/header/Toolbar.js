@@ -11,20 +11,25 @@ import {
   Notification20,
   NotificationNew20,
   ShoppingCart20,
+  Login20,
 } from "@carbon/icons-react";
 
 import { blue40 } from "@carbon/colors";
 
 import Notifications from "../notifications/Notifications";
 
-import useNotifications from "../../hooks/state/notifications";
-import useCart from "../../hooks/state/cart";
+import useNotifications from "../../store/hooks/notifications";
+import useCart from "../../store/hooks/cart";
 
 import Cart from "../cart/Cart";
+import Dialog from "../login/Dialog";
+
 
 const Toolbar = () => {
   const [notifications, setNotifications] = useNotifications();
   const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const [openLoginDialog, setOpenLoginDialog] = React.useState(false);
   const [headerPanelType, setHeaderPanelType] = React.useState("");
   const { cart } = useCart();
 
@@ -64,8 +69,11 @@ const Toolbar = () => {
             <Notification20 />
           )}
         </HeaderGlobalAction>
-        <HeaderGlobalAction aria-label="App Switcher">
-          <AppSwitcher20 />
+        <HeaderGlobalAction
+          aria-label="App Switcher"
+          onClick={() => setOpenLoginDialog(true)}
+        >
+          <Login20></Login20>
         </HeaderGlobalAction>
       </HeaderGlobalBar>
       <HeaderPanel aria-label="right panel" expanded={isExpanded}>
@@ -78,6 +86,7 @@ const Toolbar = () => {
           <Cart cart={cart} />
         )}
       </HeaderPanel>
+      <Dialog openDialog={openLoginDialog}/>
     </>
   );
 };

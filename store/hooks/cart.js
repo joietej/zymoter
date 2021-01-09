@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import cartState from "../../recoil/selectors/cartSelector";
+import cartState from "../../store/selectors/cartSelector";
 import commerce from "../../lib/commerceClient";
 
 const useCart = () => {
