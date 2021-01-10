@@ -14,7 +14,7 @@ const AppNotification = () => {
   return notification.type === "toast" ? (
     <ToastNotification
       key={notification.caption}
-      style={{position:'absolute', top:'3rem', right:0}}
+      style={{ position: "absolute", top: "3rem", right: 0 }}
       title={notification.title || "Notification"}
       subtitle={notification.subtitle || ""}
       caption={notification.caption || ""}
@@ -31,7 +31,7 @@ const AppNotification = () => {
       kind={notification.kind || "info-square"}
       onCloseButtonClick={notification.onClose}
       actions={
-        notification.onAction && (
+        !!notification.onAction && (
           <NotificationActionButton onClick={notification.onAction}>
             {notification.actionText || "Action"}
           </NotificationActionButton>
