@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Form, TextInput } from "carbon-components-react";
+import { Modal, Form, TextInput, FormGroup } from "carbon-components-react";
 import { getOtp, getUsers, verifyOtp, createUser } from "../../services/api";
 import { useAppNotification } from "../../store/hooks/notifications";
 
@@ -89,11 +89,10 @@ const Dialog = ({ open, onClose }) => {
       onRequestClose={onCancel}
       hasForm
       preventCloseOnClickOutside
-      hasScrollingContent
     >
       <Form>
         {signup ? (
-          <>
+          <FormGroup>
             <TextInput
               name='firstname'
               labelText="First Name"
@@ -112,15 +111,17 @@ const Dialog = ({ open, onClose }) => {
               value={user.email}
               onChange={onChange}
             ></TextInput>
-          </>
+          </FormGroup>
         ) : (
-          <>
+          <FormGroup>
             <TextInput
               labelText="Phone Number"
               name="phone"
               value={user.phone}
               readOnly={!!sessionId}
               onChange={onChange}
+              type="tel"
+              pattern="[0-9]{10}"
             ></TextInput>
             {sessionId && (
               <TextInput
@@ -130,7 +131,7 @@ const Dialog = ({ open, onClose }) => {
                 onChange={onChange}
               ></TextInput>
             )}
-          </>
+          </FormGroup>
         )}
       </Form>
     </Modal>
