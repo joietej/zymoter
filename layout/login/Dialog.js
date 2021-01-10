@@ -9,8 +9,8 @@ const defaultUser = {
   otp: "",
   authenticated: false,
   email: "",
-  firstName: "",
-  lastName: "",
+  firstname: "",
+  lastname: "",
 };
 
 const Dialog = ({ openDialog }) => {
@@ -22,13 +22,11 @@ const Dialog = ({ openDialog }) => {
 
   React.useEffect(() => setOpen(openDialog), [openDialog]);
 
-  const onLogin = async () => {
+  const onLogin = async (e) => {
+    e.preventDefault();
     if (signup) {
       const new_user = await createUser(user);
-      setUser({ new_user, authenticated: true });  
-      setAppNotification({ title :`Welcome ${user.firstName}`});
-      reset();
-      setOpen(false);
+      onUserFound(new_user);
       return;
     }
     if (!sessionId) {
@@ -40,10 +38,7 @@ const Dialog = ({ openDialog }) => {
         const users = await getUsers();
         const new_user = users.find((u) => u.external_id === user.phone);
         if (new_user) {
-          setUser({ new_user, authenticated: true });
-          setAppNotification({title :`Welcome ${user.firstName}`});
-          reset();
-          setOpen(false);
+          onUserFound(new_user);
         } else {
           setSignup(true);
         }
@@ -53,7 +48,15 @@ const Dialog = ({ openDialog }) => {
     }
   };
 
-  const onCancel = () => {
+  const onUserFound = (new_user) => {
+    setUser({ new_user, authenticated: true });
+    setAppNotification({title :`Welcome ${new_user.firstname}`});
+    reset();
+    setOpen(false);
+  }
+
+  const onCancel = (e) => {
+    e.preventDefault();
     if (sessionId) {
       reset();
     }
@@ -61,24 +64,32 @@ const Dialog = ({ openDialog }) => {
   };
 
   const reset = () => {
+    e.preventDefault();
     setSessionId(null);
     setUser(defaultUser);
     setSignup(false);
   };
+
+  const onChange = (e) => {
+    e.preventDefault();
+    const new_user = {...user};
+    new_user[e.target.name] = e.target.value; 
+    setUser(new_user);
+  }
 
   return (
     <Modal
       open={open}
       title="Checkout"
       modalLabel="Login"
-      modalHeading="Phone Number Verification"
+      modalHeading="Login"
       primaryButtonText={
         signup ? "Sign Up" : sessionId ? "Verify" : "Generate OTP"
       }
       secondaryButtonText="Cancel"
       onRequestSubmit={onLogin}
-      onSecondarySubmit={() => onCancel()}
-      onRequestClose={() => setOpen(false)}
+      onSecondarySubmit={onCancel}
+      onRequestClose={onCancel}
       hasForm
       preventCloseOnClickOutside
       hasScrollingContent
@@ -87,34 +98,39 @@ const Dialog = ({ openDialog }) => {
         {signup ? (
           <>
             <TextInput
+              name='firstname'
               labelText="First Name"
-              value={user.firstName}
-              onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+              value={user.firstname}
+              onChange={onChange}
             ></TextInput>
             <TextInput
               labelText="Last Name"
-              value={user.lastName}
-              onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+              name="lastname"
+              value={user.lastlame}
+              onChange={onChange}
             ></TextInput>
             <TextInput
               labelText="Email"
+              name="email"
               value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              onChange={onChange}
             ></TextInput>
           </>
         ) : (
           <>
             <TextInput
-              labelText="PhoneNumber"
+              labelText="Phone Number"
+              name="phone"
               value={user.phone}
               readOnly={!!sessionId}
-              onChange={(e) => setUser({ ...user, phone: e.target.value })}
+              onChange={onChange}
             ></TextInput>
             {sessionId && (
               <TextInput
                 labelText="OTP"
+                name="otp"
                 value={user.otp}
-                onChange={(e) => setUser({ ...user, otp: e.target.value })}
+                onChange={onChange}
               ></TextInput>
             )}
           </>
