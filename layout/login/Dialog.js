@@ -19,6 +19,8 @@ const Dialog = ({ open, onClose }) => {
   const [signup, setSignup] = React.useState(false);
   const[_, setAppNotification] = useAppNotification();
 
+  const phoneRef = React.useRef(null);
+
   const onLogin = async (e) => {
     e.preventDefault();
     if (signup) {
@@ -27,6 +29,7 @@ const Dialog = ({ open, onClose }) => {
       return;
     }
     if (!sessionId) {
+      user.phone = phoneRef.current.value; 
       const res = await getOtp(user.phone);
       setSessionId(res.Details);
     } else {
@@ -49,7 +52,7 @@ const Dialog = ({ open, onClose }) => {
     setUser({ new_user, authenticated: true });
     setAppNotification({title :`Welcome ${new_user.firstname}`});
     reset();
-    onClose()
+    onClose(e)
   }
 
   const onCancel = (e) => {
@@ -57,7 +60,7 @@ const Dialog = ({ open, onClose }) => {
     if (sessionId) {
       reset();
     }
-    onClose();
+    onClose(e);
   };
 
   const reset = () => {
@@ -117,11 +120,11 @@ const Dialog = ({ open, onClose }) => {
             <TextInput
               labelText="Phone Number"
               name="phone"
-              value={user.phone}
+              defaultValue={user.phone}
               readOnly={!!sessionId}
-              onChange={onChange}
               type="tel"
               pattern="[0-9]{10}"
+              ref={phoneRef}
             ></TextInput>
             {sessionId && (
               <TextInput
