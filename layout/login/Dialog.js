@@ -13,14 +13,11 @@ const defaultUser = {
   lastname: "",
 };
 
-const Dialog = ({ openDialog }) => {
-  const [open, setOpen] = React.useState(false);
+const Dialog = ({ open, onClose }) => {
   const [sessionId, setSessionId] = React.useState(null);
   const [user, setUser] = React.useState(defaultUser);
   const [signup, setSignup] = React.useState(false);
   const[_, setAppNotification] = useAppNotification();
-
-  React.useEffect(() => setOpen(openDialog), [openDialog]);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -52,7 +49,7 @@ const Dialog = ({ openDialog }) => {
     setUser({ new_user, authenticated: true });
     setAppNotification({title :`Welcome ${new_user.firstname}`});
     reset();
-    setOpen(false);
+    onClose()
   }
 
   const onCancel = (e) => {
@@ -60,7 +57,7 @@ const Dialog = ({ openDialog }) => {
     if (sessionId) {
       reset();
     }
-    setOpen(false);
+    onClose();
   };
 
   const reset = () => {

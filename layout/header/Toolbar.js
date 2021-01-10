@@ -24,11 +24,10 @@ import useCart from "../../store/hooks/cart";
 import Cart from "../cart/Cart";
 import Dialog from "../login/Dialog";
 
-
 const Toolbar = () => {
   const [notifications, setNotifications] = useNotifications();
   const [isExpanded, setIsExpanded] = React.useState(false);
-  
+
   const [openLoginDialog, setOpenLoginDialog] = React.useState(false);
   const [headerPanelType, setHeaderPanelType] = React.useState("");
   const { cart } = useCart();
@@ -86,7 +85,10 @@ const Toolbar = () => {
           <Cart cart={cart} />
         )}
       </HeaderPanel>
-      <Dialog openDialog={openLoginDialog}/>
+      <Dialog
+        open={openLoginDialog}
+        onClose={() => setOpenLoginDialog(false)}
+      />
     </>
   );
 };
