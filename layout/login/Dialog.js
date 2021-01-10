@@ -61,7 +61,6 @@ const Dialog = ({ open, onClose }) => {
   };
 
   const reset = () => {
-    e.preventDefault();
     setSessionId(null);
     setUser(defaultUser);
     setSignup(false);
