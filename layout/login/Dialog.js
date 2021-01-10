@@ -113,17 +113,15 @@ const Dialog = ({ open, onClose }) => {
           </FormGroup>
         ) : (
           <FormGroup legendText="OTP Verification">
-            <input
-              id="phone"
-              placeholder="Phone Number"
+            <TextInput
+              labelText="Phone Number"
               name="phone"
               value={user.phone}
               readOnly={!!sessionId}
               onChange={onChange}
               type="tel"
               pattern="[0-9]{10}"
-              required
-            ></input>
+            ></TextInput>
             {sessionId && (
               <TextInput
                 labelText="OTP"
