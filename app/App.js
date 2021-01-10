@@ -8,7 +8,7 @@ import Layout from "../layout/Layout";
 import useServiceWorker from "../hooks/serviceWorker";
 
 const App = ({ Component, pageProps }) => {
-  useServiceWorker();
+  //useServiceWorker();
 
   return (
     <>
