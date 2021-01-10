@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Form, TextInput, FormGroup } from "carbon-components-react";
 import { getOtp, getUsers, verifyOtp, createUser } from "../../services/api";
 import { useAppNotification } from "../../store/hooks/notifications";
-
+import { useLoginDialog } from "../../store/hooks/dialogs";
 
 const defaultUser = {
   phone: "",
@@ -13,11 +13,15 @@ const defaultUser = {
   lastname: "",
 };
 
-const Dialog = ({ open, onClose }) => {
+const Dialog = () => {
+  const [isOpen, setIsOpen] = useLoginDialog();
+  const [_, setAppNotification] = useAppNotification();
+
   const [sessionId, setSessionId] = React.useState(null);
   const [user, setUser] = React.useState(defaultUser);
   const [signup, setSignup] = React.useState(false);
-  const[_, setAppNotification] = useAppNotification();
+
+  const onClose = () => setIsOpen(false);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -47,10 +51,10 @@ const Dialog = ({ open, onClose }) => {
 
   const onUserFound = (new_user) => {
     setUser({ new_user, authenticated: true });
-    setAppNotification({title :`Welcome ${new_user.firstname}`});
+    setAppNotification({ title: `Welcome ${new_user.firstname}` });
     reset();
-    onClose(e)
-  }
+    onClose(e);
+  };
 
   const onCancel = (e) => {
     e.preventDefault();
@@ -68,14 +72,14 @@ const Dialog = ({ open, onClose }) => {
 
   const onChange = (e) => {
     e.preventDefault();
-    const new_user = {...user};
-    new_user[e.target.name] = e.target.value; 
+    const new_user = { ...user };
+    new_user[e.target.name] = e.target.value;
     setUser(new_user);
-  }
+  };
 
   return (
     <Modal
-      open={open}
+      open={isOpen}
       title="Login"
       modalLabel="Login"
       modalHeading="Login"
@@ -93,7 +97,7 @@ const Dialog = ({ open, onClose }) => {
         {signup ? (
           <FormGroup legendText="Your Information">
             <TextInput
-              name='firstname'
+              name="firstname"
               labelText="First Name"
               value={user.firstname}
               onChange={onChange}

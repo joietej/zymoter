@@ -20,17 +20,19 @@ import Notifications from "../notifications/Notifications";
 
 import useNotifications from "../../store/hooks/notifications";
 import useCart from "../../store/hooks/cart";
+import { useLoginDialog } from "../../store/hooks/dialogs";
 
 import Cart from "../cart/Cart";
-import Dialog from "../login/Dialog";
+
 
 const Toolbar = () => {
+  const [_, setOpenLoginDialog] = useLoginDialog();
   const [notifications, setNotifications] = useNotifications();
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
-  const [openLoginDialog, setOpenLoginDialog] = React.useState(false);
-  const [headerPanelType, setHeaderPanelType] = React.useState("");
   const { cart } = useCart();
+
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [headerPanelType, setHeaderPanelType] = React.useState("");
+ 
 
   const toggleHeaderPanel = (show, type) => {
     if (headerPanelType === type) {
@@ -85,10 +87,6 @@ const Toolbar = () => {
           <Cart cart={cart} />
         )}
       </HeaderPanel>
-      <Dialog
-        open={openLoginDialog}
-        onClose={() => setOpenLoginDialog(false)}
-      />
     </>
   );
 };

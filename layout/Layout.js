@@ -10,7 +10,8 @@ import useRoutes from "../hooks/routes";
 import AppHeader from "./header/AppHeader";
 import PageHeader from "./page/PageHeader";
 import PageContent from "./page/PageContent";
-import Dialog from "./checkout/Dialog";
+import CheckoutDialog from "./checkout/Dialog";
+import LoginDialog from "./login/Dialog";
 import AppNotification from "./notifications/AppNotification";
 
 const Layout = ({ children }) => {
@@ -41,7 +42,8 @@ const Layout = ({ children }) => {
       </main>
       <AppNotification />
       {windowSize.width > 1312 && <footer className={styles.footer}></footer>}
-      <Dialog />
+      <CheckoutDialog />
+      <LoginDialog />
     </>
   );
 };

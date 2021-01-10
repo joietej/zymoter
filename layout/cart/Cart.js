@@ -1,5 +1,4 @@
 import React from "react";
-import { useRecoilState } from "recoil";
 
 import { white } from "@carbon/colors";
 
@@ -15,12 +14,10 @@ import {
 
 import CartItem from "./CartItem";
 
-import checkoutDialogState from "../../store/state/checkoutState";
+import { useCheckoutDialog } from "../../store/hooks/dialogs";
 
 const Cart = ({ cart }) => {
-  const [_, setCheckoutDialogOpen] = useRecoilState(
-    checkoutDialogState
-  );
+  const [_, setCheckoutDialogOpen] = useCheckoutDialog();
 
   if (!cart || !cart.line_items || cart.line_items < 1) {
     return <div>Empty</div>;

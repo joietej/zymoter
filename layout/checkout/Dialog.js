@@ -1,13 +1,12 @@
 import React from "react";
-import { useRecoilState } from "recoil";
 
 import { Modal } from "carbon-components-react";
 
-import checkoutDialogState from "../../store/state/checkoutState";
 import Checkout from "./Checkout";
+import { useCheckoutDialog } from "../../store/hooks/dialogs";
 
 const Dialog = () => {
-  const [isOpen, setIsOpen] = useRecoilState(checkoutDialogState);
+  const [isOpen, setIsOpen] = useCheckoutDialog();
   const [index, setIndex] = React.useState(0);
 
   const next = (e) => {
