@@ -37,8 +37,8 @@ export const createUser = async (user) => {
   const res = await post("/api/user", null, {
     email: user.email,
     external_id: user.phone,
-    firstame: user.firstName,
-    lastname: user.lastName,
+    firstame: user.firstname,
+    lastname: user.lastname,
   });
   return { ...user, res };
 };
