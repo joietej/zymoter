@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, FormGroup, Select, TextInput } from "carbon-components-react";
+import useUser from "../../store/hooks/user";
 
 const defaultOrder = {
   shipping: {
@@ -18,7 +19,19 @@ const defaultOrder = {
 };
 
 const Shipping = () => {
+  const [user, setUser] = useUser();
   const [order, setOrder] = React.useState(defaultOrder);
+
+  React.useEffect(() => {
+    if (user.isAuthenticated) {
+      const { firstname, lastname, email } = user;
+      const new_order = {
+        ...order,
+        shipping: { ...order.shipping, firstname, lastname, email },
+      };
+      setOrder(new_order);
+    }
+  }, []);
 
   const onChange = (e) => {
     e.preventDefault();

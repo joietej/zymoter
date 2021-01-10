@@ -3,22 +3,17 @@ import { Modal, Form, TextInput, FormGroup } from "carbon-components-react";
 import { getOtp, getUsers, verifyOtp, createUser } from "../../services/api";
 import { useAppNotification } from "../../store/hooks/notifications";
 import { useLoginDialog } from "../../store/hooks/dialogs";
+import useUser from "../../store/hooks/user";
+import { defaultUser } from "../../store/state/userState";
 
-const defaultUser = {
-  phone: "",
-  otp: "",
-  authenticated: false,
-  email: "",
-  firstname: "",
-  lastname: "",
-};
+
 
 const Dialog = () => {
   const [isOpen, setIsOpen] = useLoginDialog();
   const [_, setAppNotification] = useAppNotification();
+  const [user, setUser] = useUser();
 
   const [sessionId, setSessionId] = React.useState(null);
-  const [user, setUser] = React.useState(defaultUser);
   const [signup, setSignup] = React.useState(false);
 
   const onClose = () => setIsOpen(false);
@@ -50,10 +45,10 @@ const Dialog = () => {
   };
 
   const onUserFound = (new_user) => {
-    setUser({ new_user, authenticated: true });
+    setUser({ ...new_user, authenticated: true });
     setAppNotification({ title: `Welcome ${new_user.firstname}` });
     reset();
-    onClose(e);
+    onClose();
   };
 
   const onCancel = (e) => {
@@ -61,7 +56,7 @@ const Dialog = () => {
     if (sessionId) {
       reset();
     }
-    onClose(e);
+    onClose();
   };
 
   const reset = () => {
