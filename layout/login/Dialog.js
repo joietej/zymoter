@@ -19,8 +19,6 @@ const Dialog = ({ open, onClose }) => {
   const [signup, setSignup] = React.useState(false);
   const[_, setAppNotification] = useAppNotification();
 
-  const phoneRef = React.useRef(null);
-
   const onLogin = async (e) => {
     e.preventDefault();
     if (signup) {
@@ -29,7 +27,6 @@ const Dialog = ({ open, onClose }) => {
       return;
     }
     if (!sessionId) {
-      user.phone = phoneRef.current.value; 
       const res = await getOtp(user.phone);
       setSessionId(res.Details);
     } else {
@@ -120,11 +117,11 @@ const Dialog = ({ open, onClose }) => {
             <TextInput
               labelText="Phone Number"
               name="phone"
-              defaultValue={user.phone}
+              value={user.phone}
               readOnly={!!sessionId}
+              onChange={onChange}
               type="tel"
               pattern="[0-9]{10}"
-              ref={phoneRef}
             ></TextInput>
             {sessionId && (
               <TextInput
