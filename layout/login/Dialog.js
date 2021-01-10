@@ -77,7 +77,7 @@ const Dialog = ({ open, onClose }) => {
   return (
     <Modal
       open={open}
-      title="Checkout"
+      title="Login"
       modalLabel="Login"
       modalHeading="Login"
       primaryButtonText={
@@ -92,7 +92,7 @@ const Dialog = ({ open, onClose }) => {
     >
       <Form>
         {signup ? (
-          <FormGroup>
+          <FormGroup legendText="Your Information">
             <TextInput
               name='firstname'
               labelText="First Name"
@@ -113,7 +113,7 @@ const Dialog = ({ open, onClose }) => {
             ></TextInput>
           </FormGroup>
         ) : (
-          <FormGroup>
+          <FormGroup legendText="OTP Verification">
             <TextInput
               labelText="Phone Number"
               name="phone"
