@@ -19,6 +19,7 @@ const useServiceWorker = () => {
             window.location.reload();
           });
           // Send a message to the waiting service worker, instructing it to activate.
+          console.log("sending skip waiting");
           wb.messageSW({ type: "SKIP_WAITING" });
         } else {
           console.log(
@@ -46,13 +47,13 @@ const useServiceWorker = () => {
         //     "User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time."
         //   );
         // }
-
+        console.log(event);
         setAppNotification({
           title: "Update Found",
           subtitle: "A newer juicy version is available, reload to update?",
           actionText: "Update",
-          onAction: (e) => {
-            e.preventDefault();
+          onAction: () => {
+            console.log('in action');
             updateApp(true);
           },
           onClose: () => {
@@ -62,7 +63,7 @@ const useServiceWorker = () => {
       };
 
       wb.addEventListener("waiting", promptNewVersionAvailable);
-      wb.addEventListener("externalwaiting", promptNewVersionAvailable);
+      //wb.addEventListener("externalwaiting", promptNewVersionAvailable);
 
       // ISSUE - this is not working as expected, why?
       // I could only make message event listenser work when I manually add this listenser into sw.js file

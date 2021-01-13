@@ -12,6 +12,7 @@ import {
   NotificationNew20,
   ShoppingCart20,
   Login20,
+  Logout20,
 } from "@carbon/icons-react";
 
 import { blue40 } from "@carbon/colors";
@@ -23,7 +24,7 @@ import useCart from "../../store/hooks/cart";
 import { useLoginDialog } from "../../store/hooks/dialogs";
 
 import Cart from "../cart/Cart";
-
+import useUser from "../../store/hooks/user";
 
 const Toolbar = () => {
   const [_, setOpenLoginDialog] = useLoginDialog();
@@ -32,7 +33,8 @@ const Toolbar = () => {
 
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [headerPanelType, setHeaderPanelType] = React.useState("");
- 
+
+  const { isAuthenticated } = useUser();
 
   const toggleHeaderPanel = (show, type) => {
     if (headerPanelType === type) {
@@ -71,10 +73,10 @@ const Toolbar = () => {
           )}
         </HeaderGlobalAction>
         <HeaderGlobalAction
-          aria-label="App Switcher"
+          aria-label="Login"
           onClick={() => setOpenLoginDialog(true)}
         >
-          <Login20></Login20>
+          {isAuthenticated ? <Logout20 /> : <Login20 />}
         </HeaderGlobalAction>
       </HeaderGlobalBar>
       <HeaderPanel aria-label="right panel" expanded={isExpanded}>

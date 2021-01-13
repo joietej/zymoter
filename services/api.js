@@ -19,12 +19,14 @@ export const getOrCreate = async (provider, page) => {
 };
 
 export const getOtp = async (phone) => {
-  const res = await get(`/api/otp?phone=${phone}`);
+  //const res = await get(`/api/otp?phone=${phone}`);
+  const res = { Details: "foo" };
   return res;
 };
 
 export const verifyOtp = async (session_id, code) => {
-  const res = await get(`/api/verify?session_id=${session_id}&code=${code}`);
+  //const res = await get(`/api/verify?session_id=${session_id}&code=${code}`);
+  const res = { Details: "bar" };
   return res;
 };
 

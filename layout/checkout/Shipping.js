@@ -19,11 +19,11 @@ const defaultOrder = {
 };
 
 const Shipping = () => {
-  const [user, setUser] = useUser();
+  const {user, isAuthenticated} = useUser();
   const [order, setOrder] = React.useState(defaultOrder);
 
   React.useEffect(() => {
-    if (user.isAuthenticated) {
+    if (isAuthenticated) {
       const { firstname, lastname, email } = user;
       const new_order = {
         ...order,
