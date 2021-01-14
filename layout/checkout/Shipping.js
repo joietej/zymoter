@@ -30,8 +30,10 @@ const Shipping = () => {
         shipping: { ...order.shipping, firstname, lastname, email },
       };
       setOrder(new_order);
+    } else if(user.email) {
+      setOrder({...defaultOrder});
     }
-  }, []);
+  }, [user, isAuthenticated]);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -59,6 +61,7 @@ const Shipping = () => {
         />
         <TextInput
           type="email"
+          value={order.shipping.email}
           labelText="Email"
           required
           name="email"
