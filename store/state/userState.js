@@ -7,8 +7,6 @@ export const defaultUser = {
   email: "",
   firstname: "",
   lastname: "",
-  otp: null,
-  sessionId: null
 };
 
 const userState = atom({
@@ -18,6 +16,16 @@ const userState = atom({
 
 export const usersState = atom({
   key: "usersState",
+  default: null,
+});
+
+export const sessionIdState = atom({
+  key: "sessionIdState",
+  default: null,
+});
+
+export const otpState = atom({
+  key: "otpState",
   default: null,
 });
 

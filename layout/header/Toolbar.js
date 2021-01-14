@@ -24,7 +24,8 @@ import useCart from "../../store/hooks/cart";
 import { useLoginDialog } from "../../store/hooks/dialogs";
 
 import Cart from "../cart/Cart";
-import useUser from "../../store/hooks/user";
+import { useRecoilValue } from "recoil";
+import { isAuthenticatedSelector } from "../../store/selectors/userSelector";
 
 const Toolbar = () => {
   const [_, setOpenLoginDialog] = useLoginDialog();
@@ -34,7 +35,7 @@ const Toolbar = () => {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [headerPanelType, setHeaderPanelType] = React.useState("");
 
-  const { isAuthenticated } = useUser();
+  const isAuthenticated = useRecoilValue(isAuthenticatedSelector);
 
   const toggleHeaderPanel = (show, type) => {
     if (headerPanelType === type) {

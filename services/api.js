@@ -35,12 +35,8 @@ export const getUsers = async () => {
   return res.data || [];
 };
 
-export const createUser = async (user) => {
-  const res = await post("/api/user", null, {
-    email: user.email,
-    external_id: user.phone,
-    firstame: user.firstname,
-    lastname: user.lastname,
-  });
-  return { ...user, res };
+export const createUser = async (req) => {
+  //const res = await post("/api/user", null, req);
+  //return { ...user, res };
+  return {...req, id : 'cust_1'}
 };
