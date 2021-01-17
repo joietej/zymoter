@@ -52,7 +52,7 @@ const useCart = () => {
     }
   };
 
-  return { cart, addItem, updateItem, removeItem };
+  return { cart, addItem, updateItem, removeItem, setCart };
 };
 
 export default useCart;

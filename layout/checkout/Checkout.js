@@ -11,12 +11,12 @@ import Shipping from "./Shipping";
 import Payment from "./Payment";
 import Review from "./Review";
 
-const Checkout = ({ index }) => {
+const Checkout = ({ index, checkout, onChange }) => {
   return (
     <Grid>
       <Row>
         <Column>
-          <ProgressIndicator  spaceEqually currentIndex={index}>
+          <ProgressIndicator spaceEqually currentIndex={index}>
             <ProgressStep
               current={index === 0}
               complete={index > 0}
@@ -34,7 +34,9 @@ const Checkout = ({ index }) => {
             />
           </ProgressIndicator>
           <>
-            {index === 0 && <Shipping />}
+            {index === 0 && (
+              <Shipping checkout={checkout} onChange={onChange} />
+            )}
             {index === 1 && <Payment />}
             {index === 2 && <Review />}
           </>

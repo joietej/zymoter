@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import checkoutDialogState from "../state/checkoutState";
+import {checkoutDialogState} from "../state/checkoutState";
 import loginDialogState from "../state/loginState";
 
 export const useCheckoutDialog = () => {

@@ -1,83 +1,109 @@
 import React from "react";
 import { Form, FormGroup, Select, TextInput } from "carbon-components-react";
-import useUser from "../../store/hooks/user";
 
-const defaultOrder = {
-  shipping: {
-    firstname: "",
-    lastname: "",
-    email: "",
-    address: {
-      street: "",
-      city: "",
-      zip: "",
-      country: "",
-      state: "",
-    },
-    method: "",
-  },
-};
-
-const Shipping = () => {
-  const {user, isAuthenticated} = useUser();
-  const [order, setOrder] = React.useState(defaultOrder);
-
-  React.useEffect(() => {
-    if (isAuthenticated) {
-      const { firstname, lastname, email } = user;
-      const new_order = {
-        ...order,
-        shipping: { ...order.shipping, firstname, lastname, email },
-      };
-      setOrder(new_order);
-    } else if(user.email) {
-      setOrder({...defaultOrder});
-    }
-  }, [user, isAuthenticated]);
-
-  const onChange = (e) => {
-    e.preventDefault();
-    const new_order = { ...order };
-    new_order.shipping[e.target.name] = e.target.value;
-    setOrder(new_order);
-  };
-
+const Shipping = ({ checkout, onChange }) => {
   return (
     <Form>
       <FormGroup legendText="Personal">
         <TextInput
           labelText="First Name"
-          value={order.shipping.firstname}
+          value={checkout.firstName}
           required
           onChange={onChange}
           name="firstname"
+          id="firsttname"
         />
         <TextInput
           labelText="Last Name"
-          value={order.shipping.lastname}
+          value={checkout.lastName}
           required
           onChange={onChange}
           name="lastname"
+          id="lastname"
         />
         <TextInput
           type="email"
-          value={order.shipping.email}
+          value={checkout.email}
           labelText="Email"
           required
           name="email"
           onChange={onChange}
+          id="email"
         />
       </FormGroup>
 
       <FormGroup legendText="Address">
-        <TextInput labelText="Street" required />
-        <TextInput labelText="City" required />
-        <TextInput labelText="Postal / Zip Code" required />
-        <Select labelText="Country" />
-        <Select labelText="State" />
+        <TextInput
+          labelText="Street"
+          id="street"
+          name="street"
+          required
+          value={checkout.shippingStreet}
+          onChange={onChange}
+        />
+        <TextInput labelText="City" required value={checkout.shippingCity} />
+        <TextInput
+          labelText="Postal / Zip Code"
+          id="zip"
+          name="zip"
+          required
+          value={checkout.shippingPostalZipCode}
+          onChange={onChange}
+        />
+        <Select
+          id="country"
+          name="country"
+          labelText="Country"
+          value={checkout.shippingCountry}
+          onChange={onChange}
+        >
+          <option disabled>Country</option>
+          {checkout.shippingCountries.map((value) => {
+            return (
+              <option value={value} key={value}>
+                {value}
+              </option>
+            );
+          })}
+        </Select>
+        <Select
+          labelText="State"
+          id="state"
+          name="state"
+          value={checkout.shippingStateProvince}
+          onChange={onChange}
+        >
+          <option disabled>State/province</option>
+          {checkout.shippingSubdivisions.map((value) => {
+            return (
+              <option value={value} key={value}>
+                {value}
+              </option>
+            );
+          })}
+        </Select>
       </FormGroup>
 
-      <Select labelText="Shipping Method" />
+      <Select
+        labelText="Shipping Method"
+        id="shippingMethod"
+        name="shippingMethod"
+        value={checkout.shippingOption.id}
+        onChange={onChange}
+      >
+        <option className="checkout__select-option" disabled>
+          Select a shipping method
+        </option>
+        {checkout.shippingOptions.map((method, index) => {
+          return (
+            <option
+              value={method.id}
+              key={index}
+            >{`${method.description} - ${method.price.formatted_with_code}`}</option>
+          );
+        })}
+        ;
+      </Select>
     </Form>
   );
 };
