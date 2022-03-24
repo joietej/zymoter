@@ -1,5 +1,5 @@
 import React from "react";
-import stripHtml from "string-strip-html";
+import { stripHtml } from "string-strip-html";
 
 import {
   Tile,

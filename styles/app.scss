@@ -1,5 +1,11 @@
-@import 'carbon-components/scss/globals/scss/styles.scss';
+@import "./theme.scss";
+
+$carbon--theme: $my-theme;
+
+@include carbon--theme();
+
+@import "carbon-components/scss/globals/scss/styles.scss";
 
 .bx--header-panel--expanded {
-    width: 24rem;
+  width: 24rem;
 }

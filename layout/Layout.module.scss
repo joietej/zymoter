@@ -1,11 +1,9 @@
-@import "carbon-components/scss/globals/scss/vars.scss";
 @import "carbon-components/scss/globals/scss/typography.scss";
 
 .prod-head-05 {
   @include carbon--type-style("productive-heading-05");
 }
 .container {
-  background: $ui-background;
   margin-left: 0;
   @media (min-width: 768px) {
     padding-left: $layout-04;
@@ -21,8 +19,7 @@
     height: 25%;
   }
   height: 15%;
-  background-color: $ui-05;
-  color: $inverse-01;
+  background: linear-gradient(90deg, rgb(5, 3, 39) 20%, rgba(9,9,121,1) 55%, #0f62fe 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -33,7 +30,7 @@
   @media (min-width: 769px) {
     padding-left: 5rem;
   }
-  @media (min-width: 1312 px) {
+  @media (min-width: 1312px) {
     padding-bottom: 0;
   }
   padding-left: $layout-01;
@@ -51,4 +48,14 @@
   height: 10%;
   margin-left: 0;
   margin-right: 0;
+}
+
+.homepage {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' enable-background='new 0 0 16 16' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect width='1' height='1' fill='%23fff'/%3E%3C/svg%3E");
+  background-size: 16px;
+  height: 100%;
+  opacity: .15;
+  width: 100%;
+  z-index: 1;
+  position: fixed;
 }

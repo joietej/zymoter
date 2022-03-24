@@ -6,6 +6,7 @@ import {
 } from "carbon-components-react";
 import Link from "next/link";
 
+// eslint-disable-next-line react/display-name
 const HeaderMenuItemLink = React.forwardRef(
   ({ onClick, href, name, pathname }, ref) => {
     return (
@@ -21,7 +22,7 @@ const HeaderMenuItemLink = React.forwardRef(
   }
 );
 
-const Menu = ({ routes, pathname, windowSize }) => {
+const Menu = ({ routes, pathname }) => {
   return (
     <HeaderNavigation area-label="top menu">
       {routes

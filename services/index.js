@@ -1,14 +1,13 @@
 import commerceConfig from "../config/commerce.config";
-import * as productServices from "./api";
 import commerce from "../lib/commerceClient";
 
 const executeService = async (page = "", tab = "") => {
   const predicate = (p) =>
-    !!tab ? p.name === page && p.query === tab : p.name === page;
+    tab ? p.name === page && p.query === tab : p.name === page;
 
   const pageCfg = commerceConfig.pages.find(predicate);
 
-  console.log(pageCfg.service);
+  console.log(pageCfg);
 
   switch (pageCfg?.service) {
     case "Products":

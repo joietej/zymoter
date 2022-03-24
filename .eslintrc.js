@@ -18,6 +18,6 @@ module.exports = {
   },
   plugins: ["react", "prettier"],
   rules: {
-    // "prettier/prettier": ["error"],
+    "react/prop-types": "off",
   },
 };

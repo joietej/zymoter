@@ -5,7 +5,6 @@ const {
   Categories32,
   Settings32,
   LicenseGlobal32,
-  ShoppingBag32
 } = require("@carbon/icons-react");
 
 const routes = [

@@ -16,6 +16,7 @@ const Sidebar = ({
       aria-label="Side navigation"
       isRail={windowSize.width > 768}
       expanded={isExpanded}
+      onOverlayClick={onNavLinkClick}
     >
       <SideNavItems>
         <RoutesContainer

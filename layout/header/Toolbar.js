@@ -6,7 +6,6 @@ import {
 } from "carbon-components-react";
 
 import {
-  AppSwitcher20,
   Search20,
   Notification20,
   NotificationNew20,
@@ -28,7 +27,7 @@ import { useRecoilValue } from "recoil";
 import { isAuthenticatedSelector } from "../../store/selectors/userSelector";
 
 const Toolbar = () => {
-  const [_, setOpenLoginDialog] = useLoginDialog();
+  const [, setOpenLoginDialog] = useLoginDialog();
   const [notifications, setNotifications] = useNotifications();
   const { cart } = useCart();
 

@@ -7,7 +7,6 @@ import executeService from "../../services";
 const TabView = ({data}) => {
   const { page, tab } = useRoutes();
   const Component = useComponent(page, tab);
-  //return <div>{`${page}-${tab}`}</div>;
   return <Component data={data}/>;
 };
 

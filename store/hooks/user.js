@@ -4,6 +4,7 @@ import { getUsers } from "../../services/api";
 import userState, { usersState } from "../state/userState";
 
 const useUser = () => {
+  console.log('user hook');
   const [user, setUser] = useRecoilState(userState);
   const [users, setUsers] = useRecoilState(usersState);
 

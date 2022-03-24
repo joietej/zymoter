@@ -11,6 +11,7 @@ import Sidebar from "./Sidebar";
 import Toolbar from "./Toolbar";
 import Menu from "./Menu";
 
+// eslint-disable-next-line react/display-name
 const HeaderNameLink = React.forwardRef(
   ({ href, name, prefix, onClick }, ref) => {
     return (

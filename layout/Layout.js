@@ -26,6 +26,7 @@ const Layout = ({ children }) => {
       </Head>
       <AppHeader routes={routes} pathname={pathname} windowSize={windowSize} />
       <main className={styles.container}>
+      <span className={styles.homepage} />
         <div className={styles.pageHeader}>
           <PageHeader route={route} subRoute={subRoute} />
         </div>

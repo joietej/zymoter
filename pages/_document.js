@@ -1,4 +1,6 @@
+import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+
 
 const APP_NAME = 'Zymoter'
 const APP_DESCRIPTION = 'Sample Store App'
