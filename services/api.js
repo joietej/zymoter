@@ -1,4 +1,4 @@
-import { get, post } from "./core";
+import { get } from "./core";
 
 export const fetchAll = async (provider, page) => {
   const { host, key } = provider;
@@ -32,7 +32,7 @@ export const verifyOtp = async (session_id, code) => {
 
 export const getUsers = async () => {
   const res = await get("/api/users");
-  return res.data || [];
+  return res?.data || [];
 };
 
 export const createUser = async (req) => {

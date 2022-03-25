@@ -6,7 +6,7 @@ const Signup = ({signupRequest, onChange}) => {
     <Form>
       <FormGroup legendText="Your Information">
         <TextInput
-          id="lastname"
+          id="firstname"
           name="firstname"
           labelText="First Name"
           value={signupRequest.firstname}

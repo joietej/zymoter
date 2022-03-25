@@ -10,7 +10,7 @@ import useUser from "../../store/hooks/user";
 import useCheckout from "../../store/hooks/checkout";
 import { defaultCheckout } from "../../store/state/checkoutState";
 import useOrder from "../../store/hooks/order";
-import Confirmation from "./confirmation";
+import Confirmation from "./Confirmation";
 
 const Dialog = () => {
   const [index, setIndex] = React.useState(0);

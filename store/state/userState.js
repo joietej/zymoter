@@ -1,7 +1,8 @@
 import { atom } from "recoil";
+import { getUsers } from "../../services/api";
 
 export const defaultUser = {
-  id:null,
+  id: null,
   phone: "",
   verified: false,
   email: "",
@@ -16,7 +17,13 @@ const userState = atom({
 
 export const usersState = atom({
   key: "usersState",
-  default: null,
+  default: [],
+  effects: [
+    async (x) => {
+      const data = await getUsers();
+      x.setSelf(data);
+    },
+  ],
 });
 
 export const sessionIdState = atom({
@@ -28,6 +35,5 @@ export const otpState = atom({
   key: "otpState",
   default: null,
 });
-
 
 export default userState;

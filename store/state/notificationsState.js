@@ -7,7 +7,7 @@ const notificationsState = atom({
 
 export const appNotificationState = atom({
   key: "appNotiifcationState",
-  default: {},
+  default: null,
 });
 
 export default notificationsState;
